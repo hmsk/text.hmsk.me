@@ -45,8 +45,16 @@ viewBody preamble body =
             ]
         , h2 [] [ text preamble.title ]
         , div [ class "inner" ]
-            [ Markdown.toHtml [] body
+            [ Markdown.toHtmlWith markedOptions [] body
             ]
         ]
     , View.footer
     ]
+
+markedOptions : Markdown.Options
+markedOptions =
+  { githubFlavored = Just { tables = False, breaks = False }
+  , defaultHighlighting = Nothing
+  , sanitize = False
+  , smartypants = False
+  }
