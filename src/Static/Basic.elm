@@ -64,7 +64,7 @@ viewHead preamble _ =
 {-| Make contents inside the _body_ tag. The parameter "body" is usually something like markdown.
 -}
 viewBody : Preamble -> String -> List (Html Never)
-viewBody preamble body =
+viewBody preamble _ =
     [ View.header
     , div
         [ class "main" ]
@@ -90,7 +90,7 @@ viewBody preamble body =
                 , ul []
                     (List.map
                         linkToEntry
-                        preamble.entries
+                        (List.reverse preamble.entries)
                     )
                 ]
             ]
