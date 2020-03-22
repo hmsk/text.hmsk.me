@@ -1,6 +1,6 @@
 module Static.Basic exposing (main)
 
-import Html exposing (Html, a, div, h2, li, text, ul)
+import Html exposing (Html, a, div, h2, li, text, ul, main_)
 import Html.Attributes exposing (class, href, name)
 import Json.Decode as D exposing (Decoder)
 import Markdown
@@ -66,33 +66,15 @@ viewHead preamble _ =
 viewBody : Preamble -> String -> List (Html Never)
 viewBody preamble _ =
     [ View.header
-    , div
-        [ class "main" ]
-        [ div []
-            [ h2 [] [ text "Dynamic components" ]
-            , div [ class "inner" ]
-                [ text "with Browser.element, dynamic contents can be embedded"
-                , Html.dynamic
-                    { moduleName = "Dynamic.Counter"
-                    , flags = "{value: 100}"
-                    }
-                ]
-            ]
-        , div []
-            [ h2 [] [ text "All entries" ]
-            , div [ class "inner" ]
-                [ div []
-                    [ text "Use \"preamblesIn\" parameter to get preambles of files in a specified directory."
-                    ]
-                , div []
-                    [ text "Be aware that there are some parameters which Siteelm automatically sets in an preamble. At the moment, a property \"url\" is that."
-                    ]
-                , ul []
-                    (List.map
-                        linkToEntry
-                        (List.reverse preamble.entries)
-                    )
-                ]
+    , main_
+        []
+        [ h2 [] [ text "All entries" ]
+        , div [ class "inner" ]
+            [ul []
+                (List.map
+                    linkToEntry
+                    (List.reverse preamble.entries)
+                )
             ]
         ]
     , View.footer
