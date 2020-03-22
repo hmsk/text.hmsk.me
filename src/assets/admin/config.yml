@@ -9,7 +9,7 @@ collections:
     label: Entry
     folder: src/pages/entries # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{year}}-{{month}}-{{day}}" # Filename template, e.g., YYYY-MM-DD.md
     fields: # The fields for each document, usually in front matter
       - { label: "Module", name: "module", widget: "hidden", default: "Static.Entry" }
       - { label: "Title", name: "title", widget: "string" }
