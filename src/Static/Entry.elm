@@ -1,9 +1,10 @@
 module Static.Entry exposing (main)
 
-import Html exposing (Html, a, div, h2, nav, text)
-import Html.Attributes exposing (class, href)
+import List
+import Html exposing (Html, div, h2, text, article)
 import Json.Decode as D exposing (Decoder)
 import Markdown
+import Regex
 import Siteelm.Html as Html
 import Siteelm.Html.Attributes exposing (charset)
 import Siteelm.Page exposing (Page, page)
@@ -38,18 +39,37 @@ viewHead preamble _ =
 
 viewBody : Preamble -> String -> List (Html Never)
 viewBody preamble body =
+    let
+        processedBody = replaceCustomTag body
+    in
     [ View.header
-    , div [ class "main" ]
-        [ nav []
-            [ a [ href "/", class "prev" ] [ text "home" ]
-            ]
-        , h2 [] [ text preamble.title ]
-        , div [ class "inner" ]
-            [ Markdown.toHtmlWith markedOptions [] body
+    , article []
+        [ h2 [] [ text preamble.title ]
+        , div []
+            [ Markdown.toHtmlWith markedOptions [] processedBody
             ]
         ]
     , View.footer
     ]
+
+replaceCustomTag : String -> String
+replaceCustomTag original =
+  case Regex.fromString "\\[asin:(.+):detail\\]" of
+    Nothing ->
+      original
+
+    Just regex ->
+      Regex.replace
+        regex
+        (.submatches >> amazon)
+        original
+
+amazon : List (Maybe String) -> String
+amazon list = case List.head list of
+   Just a -> case a of
+      Just b -> "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ b ++ "'}\"></div>"
+      _ -> "Nothing"
+   _ -> "Nothing"
 
 markedOptions : Markdown.Options
 markedOptions =
