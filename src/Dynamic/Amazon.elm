@@ -26,20 +26,20 @@ main =
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update _ model =
-  (model, Cmd.none)
+    ( model, Cmd.none )
 
 
 view : Model -> Html Msg
 view model =
-  let
-      url = "http://www.amazon.co.jp/dp/" ++ model.asin ++ "/ref=nosim?tag=libe-22"
-  in
-
-  p [] [
-    a [
-      href url,
-      target "_blank"
-    ] [
-      text "商品へのリンク"
-    ]
-  ]
+    let
+        url =
+            "http://www.amazon.co.jp/dp/" ++ model.asin ++ "/ref=nosim?tag=libe-22"
+    in
+    p []
+        [ a
+            [ href url
+            , target "_blank"
+            ]
+            [ text "商品へのリンク"
+            ]
+        ]

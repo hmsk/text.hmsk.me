@@ -1,8 +1,8 @@
 module Static.Entry exposing (main)
 
-import List
-import Html exposing (Html, div, h2, text, article)
+import Html exposing (Html, article, div, h2, text)
 import Json.Decode as D exposing (Decoder)
+import List
 import Markdown
 import Regex
 import Siteelm.Html as Html
@@ -40,7 +40,8 @@ viewHead preamble _ =
 viewBody : Preamble -> String -> List (Html Never)
 viewBody preamble body =
     let
-        processedBody = body |> replacer Amazon |> replacer Instagram
+        processedBody =
+            body |> replacer Amazon |> replacer Instagram
     in
     [ View.header
     , article []
@@ -52,44 +53,68 @@ viewBody preamble body =
     , View.footer
     ]
 
-type CustomTagType = Amazon | Instagram
+
+type CustomTagType
+    = Amazon
+    | Instagram
+
 
 replacer : CustomTagType -> String -> String
 replacer tag original =
     let
-        regexAndTag = case tag of
-            Amazon -> ("\\[asin:(.+):detail\\]", amazon)
-            Instagram -> ("\\[instagram:(.+)\\]", instagram)
+        regexAndTag =
+            case tag of
+                Amazon ->
+                    ( "\\[asin:(.+):detail\\]", amazon )
+
+                Instagram ->
+                    ( "\\[instagram:(.+)\\]", instagram )
     in
-        case Regex.fromString <| Tuple.first regexAndTag of
-            Nothing ->
+    case Regex.fromString <| Tuple.first regexAndTag of
+        Nothing ->
+            original
+
+        Just regex ->
+            Regex.replace
+                regex
+                (.submatches >> Tuple.second regexAndTag)
                 original
 
-            Just regex ->
-              Regex.replace
-                  regex
-                  (.submatches >> Tuple.second regexAndTag)
-                  original
 
 amazon : List (Maybe String) -> String
-amazon list = case List.head list of
-   Just a -> case a of
-      Just b -> "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ b ++ "'}\"></div>"
-      _ -> "Nothing"
-   _ -> "Nothing"
+amazon list =
+    case List.head list of
+        Just a ->
+            case a of
+                Just b ->
+                    "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ b ++ "'}\"></div>"
+
+                _ ->
+                    "Nothing"
+
+        _ ->
+            "Nothing"
+
 
 instagram : List (Maybe String) -> String
-instagram list = case List.head list of
-   Just a -> case a of
-      Just b -> "<div data-elm-module=\"Dynamic.Instagram\" data-flags=\"{ id: '" ++ b ++ "'}\"></div>"
-      _ -> "Nothing"
-   _ -> "Nothing"
+instagram list =
+    case List.head list of
+        Just a ->
+            case a of
+                Just b ->
+                    "<div data-elm-module=\"Dynamic.Instagram\" data-flags=\"{ id: '" ++ b ++ "'}\"></div>"
+
+                _ ->
+                    "Nothing"
+
+        _ ->
+            "Nothing"
 
 
 markedOptions : Markdown.Options
 markedOptions =
-  { githubFlavored = Just { tables = True, breaks = False }
-  , defaultHighlighting = Nothing
-  , sanitize = False
-  , smartypants = False
-  }
+    { githubFlavored = Just { tables = True, breaks = False }
+    , defaultHighlighting = Nothing
+    , sanitize = False
+    , smartypants = False
+    }

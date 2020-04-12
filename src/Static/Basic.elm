@@ -1,6 +1,6 @@
 module Static.Basic exposing (main)
 
-import Html exposing (Html, a, div, h2, li, text, ul, main_)
+import Html exposing (Html, a, div, h2, li, main_, text, ul)
 import Html.Attributes exposing (class, href, name)
 import Json.Decode as D exposing (Decoder)
 import Markdown
@@ -70,7 +70,7 @@ viewBody preamble _ =
         []
         [ h2 [] [ text "All entries" ]
         , div [ class "inner" ]
-            [ul []
+            [ ul []
                 (List.map
                     linkToEntry
                     (List.reverse preamble.entries)
