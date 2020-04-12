@@ -40,7 +40,7 @@ viewHead preamble _ =
 viewBody : Preamble -> String -> List (Html Never)
 viewBody preamble body =
     let
-        processedBody = replaceCustomTag body
+        processedBody = body |> replaceCustomTagForAmazon |> replaceCustomTagForInstagram
     in
     [ View.header
     , article []
@@ -52,8 +52,8 @@ viewBody preamble body =
     , View.footer
     ]
 
-replaceCustomTag : String -> String
-replaceCustomTag original =
+replaceCustomTagForAmazon : String -> String
+replaceCustomTagForAmazon original =
   case Regex.fromString "\\[asin:(.+):detail\\]" of
     Nothing ->
       original
@@ -70,6 +70,27 @@ amazon list = case List.head list of
       Just b -> "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ b ++ "'}\"></div>"
       _ -> "Nothing"
    _ -> "Nothing"
+
+replaceCustomTagForInstagram : String -> String
+replaceCustomTagForInstagram original =
+  case Regex.fromString "\\[instagram:(.+)\\]" of
+    Nothing ->
+      original
+
+    Just regex ->
+      Regex.replace
+        regex
+        (.submatches >> instagram)
+        original
+
+instagram : List (Maybe String) -> String
+instagram list = case List.head list of
+   Just a -> case a of
+      Just b -> "<div data-elm-module=\"Dynamic.Instagram\" data-flags=\"{ id: '" ++ b ++ "'}\"></div>"
+      _ -> "Nothing"
+   _ -> "Nothing"
+
+
 
 markedOptions : Markdown.Options
 markedOptions =
