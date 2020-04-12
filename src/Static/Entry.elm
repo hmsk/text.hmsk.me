@@ -94,7 +94,7 @@ instagram list = case List.head list of
 
 markedOptions : Markdown.Options
 markedOptions =
-  { githubFlavored = Just { tables = False, breaks = False }
+  { githubFlavored = Just { tables = True, breaks = False }
   , defaultHighlighting = Nothing
   , sanitize = False
   , smartypants = False
