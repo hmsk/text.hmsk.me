@@ -33,7 +33,7 @@ view : Model -> Html Msg
 view model =
     let
         url =
-            "https://instagram.com/p/" ++ model.id ++ "/ref=nosim?tag=libe-22"
+            "https://instagram.com/p/" ++ model.id ++ "/"
 
         imageUrl =
             "https://instagram.com/p/" ++ model.id ++ "/media/?size=l"
