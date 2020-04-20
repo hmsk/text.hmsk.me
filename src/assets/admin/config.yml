@@ -7,12 +7,37 @@ public_folder: /uploads
 collections:
   - name: blog
     label: Entry
-    folder: src/pages/entries # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}" # Filename template, e.g., YYYY-MM-DD.md
-    fields: # The fields for each document, usually in front matter
-      - { label: "Module", name: "module", widget: "hidden", default: "Static.Entry" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
+    folder: src/pages/entries
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}"
+    fields:
+      - label: Module
+        name: module
+        widget: hidden
+        default: Static.Entry
+      - label: Title
+        name: title
+        widget: string
+      - label: Category
+        name: category
+        widget: select
+        multiple: true
+        min: 1
+        options:
+          - comment
+          - us
+          - jp
+          - yoyo
+      - label: Publish Date
+        name: date
+        widget: date
+        format: YYYY-MM-DD
+      - label: Body
+        name: body
+        widget: markdown
+editor:
+  preview: false
+sortableFields:
+  - date
+  - title
+  - category
