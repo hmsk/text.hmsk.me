@@ -1,6 +1,7 @@
 module Static.Entry exposing (main)
 
 import Html exposing (Html, article, div, h2, text)
+import Html.Attributes exposing (src)
 import Json.Decode as D exposing (Decoder)
 import List
 import Markdown
@@ -34,6 +35,7 @@ viewHead : Preamble -> String -> List (Html Never)
 viewHead preamble _ =
     [ Html.meta [ charset "utf-8" ]
     , Html.title [] (preamble.title ++ " | sub")
+    , Html.script "https://cdn.iframe.ly/embed.js" ""
     ]
 
 
@@ -41,7 +43,7 @@ viewBody : Preamble -> String -> List (Html Never)
 viewBody preamble body =
     let
         processedBody =
-            body |> replacer Amazon |> replacer Instagram
+            body |> replacer Amazon |> replacer Instagram |> replacer EmbedCard
     in
     [ View.header
     , article []
@@ -57,6 +59,7 @@ viewBody preamble body =
 type CustomTagType
     = Amazon
     | Instagram
+    | EmbedCard
 
 
 replacer : CustomTagType -> String -> String
@@ -69,6 +72,9 @@ replacer tag original =
 
                 Instagram ->
                     ( "\\[instagram:(.+)\\]", instagram )
+
+                EmbedCard ->
+                    ( "\\[embed:(.+)\\]", embedCard )
     in
     case Regex.fromString <| Tuple.first regexAndTag of
         Nothing ->
@@ -103,6 +109,21 @@ instagram list =
             case a of
                 Just b ->
                     "<div data-elm-module=\"Dynamic.Instagram\" data-flags=\"{ id: '" ++ b ++ "'}\"></div>"
+
+                _ ->
+                    "Nothing"
+
+        _ ->
+            "Nothing"
+
+
+embedCard : List (Maybe String) -> String
+embedCard list =
+    case List.head list of
+        Just a ->
+            case a of
+                Just b ->
+                    "<div data-elm-module=\"Dynamic.EmbedCard\" data-flags=\"{ url: '" ++ b ++ "', embed: '' }\"></div>"
 
                 _ ->
                     "Nothing"
