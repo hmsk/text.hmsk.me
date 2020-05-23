@@ -8,7 +8,6 @@ import Json.Decode as D exposing (Decoder)
 import Markdown
 import Regex
 import Siteelm.Html as Html
-import Siteelm.Html.Attributes exposing (charset)
 import Siteelm.Page exposing (Page, page)
 import Static.View as View
 
@@ -34,8 +33,7 @@ preambleDecoder =
 
 viewHead : Preamble -> String -> List (Html Never)
 viewHead preamble _ =
-    [ Html.meta [ charset "utf-8" ]
-    , Html.title [] (preamble.title ++ " | sub")
+    [ Html.title [] (preamble.title ++ " | text.hmsk.me")
     , Html.script "https://cdn.iframe.ly/embed.js" ""
     ]
 

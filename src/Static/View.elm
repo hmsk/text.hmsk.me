@@ -16,7 +16,7 @@ header =
             [ href "/"
             , css
                 [ textDecoration none
-                , color <| hex "#295972"
+                , color <| hex "#597B8C"
                 , fontWeight (int 500)
                 , fontSize (px 24)
                 ]

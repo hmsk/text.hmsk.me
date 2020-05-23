@@ -3,11 +3,12 @@ module Siteelm.Page exposing (Page, page)
 import Browser
 import Css exposing (backgroundColor, color, fontFamilies, hex)
 import Html exposing (Html)
-import Html.Attributes exposing (href, rel)
+import Html.Attributes exposing (href, lang, name)
 import Html.Styled exposing (Attribute, fromUnstyled, node, toUnstyled)
 import Html.Styled.Attributes exposing (css)
 import Json.Decode exposing (Decoder, decodeString)
 import Siteelm.Html as Html
+import Siteelm.Html.Attributes exposing (charset, content, property, rel)
 
 
 {-| Generate a Program for static page. You need to give a decoder for your
@@ -68,11 +69,22 @@ renderPage head body model =
             in
             Html.html []
                 [ Html.head
-                    []
+                    [ lang "ja" ]
                   <|
-                    List.concat
-                        [ [ Html.link [ href "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap", rel "stylesheet" ] ]
-                        , head p model.body
+                    List.foldr
+                        (::)
+                        (head p model.body)
+                        [ Html.meta [ charset "utf-8" ]
+                        , Html.link [ href "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap", rel "stylesheet" ]
+                        , Html.meta [ name "viewport", content "width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" ]
+                        , Html.meta [ name "author", content "@hmsk / Kengo Hamasaki" ]
+                        , Html.meta [ name "theme-color", content "#597B8C" ]
+                        , Html.meta [ name "description", property "og:description", content "text hmsk wrote" ]
+                        , Html.meta [ property "og:image", content "https://text.hmsk.me/images/og_image.png" ]
+                        , Html.meta [ property "og:type", content "blog" ]
+                        , Html.meta [ property "twitter:card", content "summary" ]
+                        , Html.meta [ property "twitter:creator", content "@hmsk" ]
+                        , Html.meta [ property "twitter:site", content "@hmsk" ]
                         ]
                 , toUnstyled <| node "body" [ bodyStyle ] bodyHtml
                 ]

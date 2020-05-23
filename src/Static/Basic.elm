@@ -2,12 +2,11 @@ module Static.Basic exposing (main)
 
 import Css exposing (..)
 import Html exposing (Html)
-import Html.Attributes exposing (name)
 import Html.Styled exposing (Attribute, a, div, h2, li, main_, styled, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (class, css, href)
 import Json.Decode as D exposing (Decoder)
 import Siteelm.Html as Html
-import Siteelm.Html.Attributes exposing (charset, content)
+import Siteelm.Html.Attributes exposing (content, property)
 import Siteelm.Page exposing (Page, page)
 import Static.View as View
 
@@ -57,9 +56,8 @@ entryDecoder =
 -}
 viewHead : Preamble -> String -> List (Html Never)
 viewHead preamble _ =
-    [ Html.meta [ charset "utf-8" ]
-    , Html.title [] preamble.title
-    , Html.meta [ name "description", Siteelm.Html.Attributes.content "text.hmsk.me" ]
+    [ Html.title [] preamble.title
+    , Html.meta [ Siteelm.Html.Attributes.property "og:url", Siteelm.Html.Attributes.content "https://text.hmsk.me/" ]
     ]
 
 
@@ -101,9 +99,9 @@ linkToEntry article =
 linkHtml : List (Attribute Never) -> List (Html.Styled.Html Never) -> Html.Styled.Html Never
 linkHtml =
     styled Html.Styled.a
-        [ color <| hex "#295972"
+        [ color <| hex "#597B8C"
         , textDecoration none
-        , borderBottom3 (px 1) solid <| hex "#295972"
+        , borderBottom3 (px 1) solid <| hex "#597B8C"
         , hover
             [ textDecoration none
             , color <| hex "#397A9D"
