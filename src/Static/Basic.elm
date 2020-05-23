@@ -1,9 +1,11 @@
 module Static.Basic exposing (main)
 
-import Html exposing (Html, a, div, h2, li, main_, text, ul)
-import Html.Attributes exposing (class, href, name)
+import Css exposing (..)
+import Html exposing (Html)
+import Html.Attributes exposing (name)
+import Html.Styled exposing (Attribute, a, div, h2, li, main_, styled, text, toUnstyled, ul)
+import Html.Styled.Attributes exposing (class, css, href)
 import Json.Decode as D exposing (Decoder)
-import Markdown
 import Siteelm.Html as Html
 import Siteelm.Html.Attributes exposing (charset, content)
 import Siteelm.Page exposing (Page, page)
@@ -57,7 +59,7 @@ viewHead : Preamble -> String -> List (Html Never)
 viewHead preamble _ =
     [ Html.meta [ charset "utf-8" ]
     , Html.title [] preamble.title
-    , Html.meta [ name "description", content "text.hmsk.me" ]
+    , Html.meta [ name "description", Siteelm.Html.Attributes.content "text.hmsk.me" ]
     ]
 
 
@@ -65,26 +67,46 @@ viewHead preamble _ =
 -}
 viewBody : Preamble -> String -> List (Html Never)
 viewBody preamble _ =
-    [ View.header
-    , main_
-        []
-        [ h2 [] [ text "All entries" ]
-        , div [ class "inner" ]
-            [ ul []
-                (List.map
-                    linkToEntry
-                    (List.reverse preamble.entries)
-                )
+    List.map
+        toUnstyled
+        [ View.header
+        , main_
+            [ css
+                [ maxWidth (px 1280)
+                , margin auto
+                ]
+            ]
+            [ h2 [ css [ fontWeight (int 500) ] ] [ text "All entries" ]
+            , div [ class "inner" ]
+                [ ul [ css [ padding (px 0) ] ]
+                    (List.map
+                        linkToEntry
+                        (List.reverse preamble.entries)
+                    )
+                ]
+            ]
+        , View.footer
+        ]
+
+
+linkToEntry : Entry -> Html.Styled.Html Never
+linkToEntry article =
+    li [ css [ listStyle none, margin2 (px 8) (px 0) ] ]
+        [ linkHtml [ href article.url ]
+            [ text article.title
             ]
         ]
-    , View.footer
-    ]
 
 
-linkToEntry : Entry -> Html Never
-linkToEntry article =
-    li []
-        [ a [ href article.url ]
-            [ text article.title
+linkHtml : List (Attribute Never) -> List (Html.Styled.Html Never) -> Html.Styled.Html Never
+linkHtml =
+    styled Html.Styled.a
+        [ color <| hex "#295972"
+        , textDecoration none
+        , borderBottom3 (px 1) solid <| hex "#295972"
+        , hover
+            [ textDecoration none
+            , color <| hex "#397A9D"
+            , borderBottom3 (px 1) solid <| hex "#397A9D"
             ]
         ]

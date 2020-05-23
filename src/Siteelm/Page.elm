@@ -1,7 +1,11 @@
 module Siteelm.Page exposing (Page, page)
 
 import Browser
+import Css exposing (backgroundColor, color, fontFamilies, hex)
 import Html exposing (Html)
+import Html.Attributes exposing (href, rel)
+import Html.Styled exposing (Attribute, fromUnstyled, node, toUnstyled)
+import Html.Styled.Attributes exposing (css)
 import Json.Decode exposing (Decoder, decodeString)
 import Siteelm.Html as Html
 
@@ -58,10 +62,29 @@ renderPage : (a -> String -> List (Html Never)) -> (a -> String -> List (Html Ne
 renderPage head body model =
     case model.preamble of
         Just p ->
+            let
+                bodyHtml =
+                    List.map fromUnstyled (body p model.body)
+            in
             Html.html []
-                [ Html.head [] <| head p model.body
-                , Html.body [] <| body p model.body
+                [ Html.head
+                    []
+                  <|
+                    List.concat
+                        [ [ Html.link [ href "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap", rel "stylesheet" ] ]
+                        , head p model.body
+                        ]
+                , toUnstyled <| node "body" [ bodyStyle ] bodyHtml
                 ]
 
         Nothing ->
             Html.text ""
+
+
+bodyStyle : Attribute Never
+bodyStyle =
+    css
+        [ fontFamilies [ "'M PLUS Rounded 1c'", "sans-serif" ]
+        , color <| hex "#397A9D"
+        , backgroundColor <| hex "#EAEEF0"
+        ]

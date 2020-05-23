@@ -1,16 +1,34 @@
 module Static.View exposing (footer, header)
 
-import Html exposing (Html, a, text)
-import Html.Attributes exposing (href)
+import Css exposing (..)
+import Html.Styled exposing (Html, a, footer, header, text)
+import Html.Styled.Attributes exposing (css, href)
 
 
-header : Html Never
+header : Html.Styled.Html Never
 header =
-    Html.header []
-        [ a [ href "/" ] [ text "text.hmsk.me" ]
+    Html.Styled.header
+        [ css
+            [ textAlign center
+            ]
+        ]
+        [ a
+            [ href "/"
+            , css
+                [ textDecoration none
+                , color <| hex "#295972"
+                , fontWeight (int 500)
+                , fontSize (px 24)
+                ]
+            ]
+            [ text "text.hmsk.me" ]
         ]
 
 
 footer : Html Never
 footer =
-    Html.footer [] [ text "© 2012-2020 Kengo Hamasaki / @hmsk" ]
+    Html.Styled.footer
+        [ css
+            [ textAlign center, marginTop (px 48) ]
+        ]
+        [ text "© 2012-2020 Kengo Hamasaki / @hmsk" ]

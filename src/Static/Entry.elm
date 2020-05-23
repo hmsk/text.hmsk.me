@@ -1,9 +1,10 @@
 module Static.Entry exposing (main)
 
-import Html exposing (Html, article, div, h2, text)
-import Html.Attributes exposing (src)
+import Css exposing (..)
+import Html exposing (Html)
+import Html.Styled exposing (article, div, fromUnstyled, h2, text, toUnstyled)
+import Html.Styled.Attributes exposing (css)
 import Json.Decode as D exposing (Decoder)
-import List
 import Markdown
 import Regex
 import Siteelm.Html as Html
@@ -45,15 +46,17 @@ viewBody preamble body =
         processedBody =
             body |> replacer Amazon |> replacer Instagram |> replacer EmbedCard
     in
-    [ View.header
-    , article []
-        [ h2 [] [ text preamble.title ]
-        , div []
-            [ Markdown.toHtmlWith markedOptions [] processedBody
+    List.map
+        toUnstyled
+        [ View.header
+        , article [ css [ maxWidth (px 1280), margin auto ] ]
+            [ h2 [] [ text preamble.title ]
+            , div []
+                [ fromUnstyled <| Markdown.toHtmlWith markedOptions [] processedBody
+                ]
             ]
+        , View.footer
         ]
-    , View.footer
-    ]
 
 
 type CustomTagType
