@@ -27,15 +27,17 @@ main =
 type alias Preamble =
     { title : String
     , date : Posix
+    , url : String
     , originalUrl : Maybe String
     }
 
 
 preambleDecoder : Decoder Preamble
 preambleDecoder =
-    D.map3 Preamble
+    D.map4 Preamble
         (D.field "title" D.string)
         (D.field "date" datetime)
+        (D.field "url" D.string)
         (D.field "original_url" D.string |> D.maybe)
 
 
@@ -44,10 +46,13 @@ viewHead preamble _ =
     let
         title =
             preamble.title ++ " | text.hmsk.me"
+        url =
+            "https://text.hmsk.me/entries" ++ preamble.url
     in
     [ Html.title [] title
     , Html.script "https://cdn.iframe.ly/embed.js" ""
     , Html.meta [ Siteelm.Html.Attributes.property "og:title", Siteelm.Html.Attributes.content title ]
+    , Html.meta [ Siteelm.Html.Attributes.property "og:url", Siteelm.Html.Attributes.content url ]
     ]
 
 
