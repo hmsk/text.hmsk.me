@@ -2,7 +2,7 @@ module Static.Basic exposing (main)
 
 import Css exposing (..)
 import Html exposing (Html)
-import Html.Styled exposing (Attribute, a, div, h2, li, main_, styled, text, toUnstyled, ul)
+import Html.Styled exposing (a, div, h2, li, main_, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (class, css, href)
 import Json.Decode as D exposing (Decoder)
 import Siteelm.Html as Html
@@ -91,21 +91,7 @@ viewBody preamble _ =
 linkToEntry : Entry -> Html.Styled.Html Never
 linkToEntry article =
     li [ css [ listStyle none, margin2 (px 8) (px 0) ] ]
-        [ linkHtml [ href article.url ]
+        [ a [ href article.url ]
             [ text article.title
-            ]
-        ]
-
-
-linkHtml : List (Attribute Never) -> List (Html.Styled.Html Never) -> Html.Styled.Html Never
-linkHtml =
-    styled Html.Styled.a
-        [ color <| hex "#597B8C"
-        , textDecoration none
-        , borderBottom3 (px 1) solid <| hex "#597B8C"
-        , hover
-            [ textDecoration none
-            , color <| hex "#397A9D"
-            , borderBottom3 (px 1) solid <| hex "#397A9D"
             ]
         ]

@@ -64,7 +64,9 @@ viewBody preamble body =
             [ h2 [] [ text preamble.title ]
             , h3 [] [ text <| dateFormat preamble.date ]
             , linkForOriginal preamble.originalUrl
-            , div []
+            , div
+                [ css [ lineHeight (num 1.8) ]
+                ]
                 [ fromUnstyled <| Markdown.toHtmlWith markedOptions [] processedBody
                 ]
             ]

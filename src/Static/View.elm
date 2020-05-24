@@ -19,6 +19,7 @@ header =
                 , color <| hex "#597B8C"
                 , fontWeight (int 500)
                 , fontSize (px 24)
+                , borderStyle none
                 ]
             ]
             [ text "text.hmsk.me" ]

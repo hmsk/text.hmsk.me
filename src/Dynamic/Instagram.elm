@@ -1,8 +1,8 @@
 module Dynamic.Instagram exposing (main)
 
 import Browser
-import Html exposing (Html, a, img, p, text)
-import Html.Attributes exposing (href, src, target)
+import Html exposing (Html, a, img, p)
+import Html.Attributes exposing (class, href, src, target)
 
 
 type alias Model =
@@ -42,6 +42,7 @@ view model =
         [ a
             [ href url
             , target "_blank"
+            , class "dynamicInstagram"
             ]
             [ img
                 [ src imageUrl

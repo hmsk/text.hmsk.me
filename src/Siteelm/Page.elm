@@ -1,7 +1,8 @@
 module Siteelm.Page exposing (Page, page)
 
 import Browser
-import Css exposing (backgroundColor, color, fontFamilies, hex)
+import Css exposing (backgroundColor, borderBottom3, borderStyle, color, fontFamilies, hex, hover, none, px, solid, textDecoration)
+import Css.Global exposing (global, selector)
 import Html exposing (Html)
 import Html.Attributes exposing (href, lang, name)
 import Html.Styled exposing (Attribute, fromUnstyled, node, toUnstyled)
@@ -85,6 +86,7 @@ renderPage head body model =
                         , Html.meta [ property "twitter:card", content "summary" ]
                         , Html.meta [ property "twitter:creator", content "@hmsk" ]
                         , Html.meta [ property "twitter:site", content "@hmsk" ]
+                        , toUnstyled <| globalStyle
                         ]
                 , toUnstyled <| node "body" [ bodyStyle ] bodyHtml
                 ]
@@ -99,4 +101,21 @@ bodyStyle =
         [ fontFamilies [ "'M PLUS Rounded 1c'", "sans-serif" ]
         , color <| hex "#397A9D"
         , backgroundColor <| hex "#EAEEF0"
+        ]
+
+
+globalStyle : Html.Styled.Html msg
+globalStyle =
+    global
+        [ selector "a"
+            [ color <| hex "#597B8C"
+            , textDecoration none
+            , borderBottom3 (px 1) solid <| hex "#597B8C"
+            , hover
+                [ textDecoration none
+                , color <| hex "#397A9D"
+                , borderBottom3 (px 1) solid <| hex "#397A9D"
+                ]
+            ]
+        , selector ".dynamicInstagram" [ borderStyle none ]
         ]
