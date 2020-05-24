@@ -9,6 +9,7 @@ import Json.Decode.Extra exposing (datetime)
 import Markdown
 import Regex
 import Siteelm.Html as Html
+import Siteelm.Html.Attributes exposing (content, property)
 import Siteelm.Page exposing (Page, page)
 import Static.View as View
 import Time exposing (..)
@@ -40,8 +41,13 @@ preambleDecoder =
 
 viewHead : Preamble -> String -> List (Html Never)
 viewHead preamble _ =
-    [ Html.title [] (preamble.title ++ " | text.hmsk.me")
+    let
+        title =
+            preamble.title ++ " | text.hmsk.me"
+    in
+    [ Html.title [] title
     , Html.script "https://cdn.iframe.ly/embed.js" ""
+    , Html.meta [ Siteelm.Html.Attributes.property "og:title", Siteelm.Html.Attributes.content title ]
     ]
 
 

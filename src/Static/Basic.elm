@@ -58,6 +58,7 @@ viewHead : Preamble -> String -> List (Html Never)
 viewHead preamble _ =
     [ Html.title [] preamble.title
     , Html.meta [ Siteelm.Html.Attributes.property "og:url", Siteelm.Html.Attributes.content "https://text.hmsk.me/" ]
+    , Html.meta [ Siteelm.Html.Attributes.property "og:title", Siteelm.Html.Attributes.content "text.hmsk.me" ]
     ]
 
 
