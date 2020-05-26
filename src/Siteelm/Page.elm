@@ -1,7 +1,7 @@
 module Siteelm.Page exposing (Page, page)
 
 import Browser
-import Css exposing (backgroundColor, borderBottom3, borderStyle, color, fontFamilies, hex, hover, none, px, solid, textDecoration)
+import Css exposing (backgroundColor, borderBottom3, borderStyle, color, fontFamilies, hex, hover, none, px, solid, textDecoration, dashed)
 import Css.Global exposing (global, selector)
 import Html exposing (Html)
 import Html.Attributes exposing (href, lang, name)
@@ -114,7 +114,7 @@ globalStyle =
             , hover
                 [ textDecoration none
                 , color <| hex "#397A9D"
-                , borderBottom3 (px 1) solid <| hex "#397A9D"
+                , borderBottom3 (px 1) dashed <| hex "#397A9D"
                 ]
             ]
         , selector ".dynamicInstagram" [ borderStyle none ]
