@@ -1,20 +1,44 @@
 module Static.Feed exposing (main)
 
-import Date exposing (fromCalendarDate)
-import Html exposing (Html, text)
-import Json.Decode as D exposing (Decoder)
-import Rss exposing (Item, generate)
-import Siteelm.Page exposing (Page, page)
-import Time exposing (Month(..), millisToPosix)
+import Browser
+import Html exposing (Html, node, text)
+import Html.Attributes exposing (attribute, href)
+import Json.Decode as D exposing (Decoder, decodeString)
 
 
-main : Page Preamble
+main : Program Flags (Model Preamble) Never
 main =
-    page
-        { decoder = preambleDecoder
-        , head = viewHead
-        , body = viewBody
+    Browser.document
+        { init = \f -> ( decode preambleDecoder f, Cmd.none )
+        , update = \_ m -> ( m, Cmd.none )
+        , view = \m -> { title = "", body = viewBody m }
+        , subscriptions = always Sub.none
         }
+
+
+type alias Flags =
+    { preamble : String
+    , body : String
+    }
+
+
+type alias Model a =
+    { preamble : Maybe a
+    , body : String
+    }
+
+
+decode : Decoder a -> Flags -> Model a
+decode decoder flags =
+    let
+        preamble =
+            flags.preamble
+                |> decodeString decoder
+                |> Result.toMaybe
+    in
+    { preamble = preamble
+    , body = flags.body
+    }
 
 
 type alias Preamble =
@@ -43,36 +67,41 @@ entryDecoder =
         (D.field "date" D.string)
 
 
-viewHead : Preamble -> String -> List (Html Never)
-viewHead _ _ =
-    []
+viewBody : Model Preamble -> List (Html Never)
+viewBody model =
+    case model.preamble of
+        Just p ->
+            [ atomFeedFor <| List.reverse p.entries ]
+
+        _ ->
+            [ text "Nothing" ]
 
 
-viewBody : Preamble -> String -> List (Html Never)
-viewBody preamble _ =
-    [ text <| rssify preamble.entries ]
+atomFeedFor : List Entry -> Html msg
+atomFeedFor entries =
+    node "feed"
+        [ attribute "xmlns" "http://www.w3.org/2005/Atom" ]
+    <|
+        List.foldr
+            (::)
+            (List.map asAtom entries)
+            [ node "title" [] [ text "text.hmsk.me" ]
+            , node "link" [ href "https://text.hmsk.me/" ] []
+            , node "updated" [] [ text "Mon, 08 Jun 2020 06:18:33 +0000" ]
+            , node "author"
+                []
+                [ node "name" [] [ text "Kengo Hamasaki" ]
+                ]
+            , node "generator" [] [ text "Japonica" ]
+            ]
 
 
-rssify : List Entry -> String
-rssify entries =
-    generate
-        { title = "text.hmsk.me"
-        , description = "text hmsk wrote"
-        , url = "https://text.hmsk.me/"
-        , lastBuildTime = millisToPosix 1591597113890
-        , generator = Just "japonica"
-        , items = List.map itemify <| List.reverse entries
-        , siteUrl = "https://text.hmsk.me/"
-        }
-
-
-itemify : Entry -> Item
-itemify entry =
-    { title = entry.title
-    , description = entry.title
-    , url = entry.url
-    , categories = []
-    , author = "Kengo Hamasaki"
-    , pubDate = Rss.Date <| fromCalendarDate 2020 Jun 7
-    , content = Nothing
-    }
+asAtom : Entry -> Html msg
+asAtom entry =
+    node "entry"
+        []
+        [ node "title" [] [ text entry.title ]
+        , node "link" [ href entry.url ] []
+        , node "id" [] [ text entry.url ]
+        , node "published" [] [ text entry.date ]
+        ]

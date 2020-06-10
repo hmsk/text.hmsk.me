@@ -3,6 +3,7 @@ build:
     contents:
         src_dir: ./src/pages
         index: ./src/pages/index.md
+        feed: ./src/pages/feed.md
         exclude:
             - ./**/*.yaml
     assets:
@@ -13,4 +14,3 @@ build:
             - ./**/View.elm
     dynamic_elm:
         src_dir: ./src/Dynamic
-
