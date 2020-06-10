@@ -95,7 +95,7 @@ atomFeedFor entries =
             (::)
             (List.map asAtom entries)
             [ node "title" [] [ text "text.hmsk.me" ]
-            , node "id" [] [ text "japonica://text.hmsk.me" ]
+            , node "id" [] [ text "tag:text.hmsk.me,2020:/index" ]
             , node "link" [ href "https://text.hmsk.me/feed.xml", type_ "application/atom+xml", rel "self" ] []
             , node "link" [ href "https://text.hmsk.me/", type_ "text/html", rel "alternate" ] []
             , node "updated" [] [ text latestUpdated ]
@@ -112,7 +112,7 @@ asAtom entry =
     node "entry"
         []
         [ node "title" [] [ text entry.title ]
-        , node "id" [] [ text <| "japonica://entry/" ++ entry.url ]
+        , node "id" [] [ text <| "tag:text.hmsk.me,2020:" ++ entry.url ]
         , node "link" [ href <| "https://text.hmsk.me/" ++ entry.url, type_ "text/html", rel "alternate" ] []
         , node "updated" [] [ text entry.date ]
         , node "content" [] [ text <| "Content for " ++ entry.title ]
