@@ -1,10 +1,10 @@
 module Siteelm.Page exposing (Page, page)
 
 import Browser
-import Css exposing (backgroundColor, borderBottom3, borderStyle, color, fontFamilies, hex, hover, none, px, solid, textDecoration, dashed)
+import Css exposing (backgroundColor, borderBottom3, borderStyle, color, dashed, fontFamilies, hex, hover, none, px, solid, textDecoration)
 import Css.Global exposing (global, selector)
 import Html exposing (Html)
-import Html.Attributes exposing (href, lang, name)
+import Html.Attributes exposing (href, lang, name, title, type_)
 import Html.Styled exposing (Attribute, fromUnstyled, node, toUnstyled)
 import Html.Styled.Attributes exposing (css)
 import Json.Decode exposing (Decoder, decodeString)
@@ -77,6 +77,7 @@ renderPage head body model =
                         (head p model.body)
                         [ Html.meta [ charset "utf-8" ]
                         , Html.link [ href "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap", rel "stylesheet" ]
+                        , Html.link [ href "https://text.hmsk.me/feed.xml", rel "alternate", type_ "application/atom+xml", title "Atom" ]
                         , Html.meta [ name "viewport", content "width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" ]
                         , Html.meta [ name "author", content "@hmsk / Kengo Hamasaki" ]
                         , Html.meta [ name "theme-color", content "#597B8C" ]
