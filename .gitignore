@@ -6,3 +6,5 @@ repl-temp-*
 node_modules
 # siteelm output
 dist
+
+.envrc
