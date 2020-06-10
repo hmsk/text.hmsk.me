@@ -2,7 +2,7 @@ module Static.Feed exposing (main)
 
 import Browser
 import Html exposing (Html, node, text)
-import Html.Attributes exposing (attribute, href)
+import Html.Attributes exposing (attribute, href, rel, type_)
 import Json.Decode as D exposing (Decoder, decodeString)
 
 
@@ -79,6 +79,15 @@ viewBody model =
 
 atomFeedFor : List Entry -> Html msg
 atomFeedFor entries =
+    let
+        latestUpdated =
+            case List.head entries of
+                Just e ->
+                    e.date
+
+                _ ->
+                    ""
+    in
     node "feed"
         [ attribute "xmlns" "http://www.w3.org/2005/Atom" ]
     <|
@@ -86,11 +95,13 @@ atomFeedFor entries =
             (::)
             (List.map asAtom entries)
             [ node "title" [] [ text "text.hmsk.me" ]
-            , node "link" [ href "https://text.hmsk.me/" ] []
-            , node "updated" [] [ text "Mon, 08 Jun 2020 06:18:33 +0000" ]
+            , node "id" [] [ text "japonica://text.hmsk.me" ]
+            , node "link" [ href "https://text.hmsk.me/feed.xml", type_ "application/atom+xml", rel "self" ] []
+            , node "link" [ href "https://text.hmsk.me/", type_ "text/html", rel "alternate" ] []
+            , node "updated" [] [ text latestUpdated ]
             , node "author"
                 []
-                [ node "name" [] [ text "Kengo Hamasaki" ]
+                [ node "name" [] [ text "@hmsk - Kengo Hamasaki" ]
                 ]
             , node "generator" [] [ text "Japonica" ]
             ]
@@ -101,7 +112,8 @@ asAtom entry =
     node "entry"
         []
         [ node "title" [] [ text entry.title ]
-        , node "link" [ href entry.url ] []
-        , node "id" [] [ text entry.url ]
-        , node "published" [] [ text entry.date ]
+        , node "id" [] [ text <| "japonica://entry/" ++ entry.url ]
+        , node "link" [ href <| "https://text.hmsk.me/" ++ entry.url, type_ "text/html", rel "alternate" ] []
+        , node "updated" [] [ text entry.date ]
+        , node "content" [] [ text <| "Content for " ++ entry.title ]
         ]
