@@ -28,6 +28,7 @@ collections:
           - us
           - jp
           - yoyo
+          - code
       - label: Publish Date
         name: date
         widget: date
