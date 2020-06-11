@@ -1,8 +1,8 @@
-module Static.Basic exposing (main)
+module Static.Index exposing (main)
 
-import Css exposing (..)
+import Css exposing (auto, backgroundColor, block, borderRadius, color, display, em, fontSize, fontWeight, hex, int, listStyle, margin, margin2, marginLeft, marginTop, maxWidth, none, padding, padding2, px)
 import Html exposing (Html)
-import Html.Styled exposing (a, div, h2, li, main_, text, toUnstyled, ul)
+import Html.Styled exposing (a, div, h2, li, main_, span, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (class, css, href)
 import Json.Decode as D exposing (Decoder)
 import Siteelm.Html as Html
@@ -32,6 +32,7 @@ type alias Entry =
     { url : String
     , title : String
     , date : String
+    , category : List String
     }
 
 
@@ -46,10 +47,11 @@ preambleDecoder =
 
 entryDecoder : Decoder Entry
 entryDecoder =
-    D.map3 Entry
+    D.map4 Entry
         (D.field "url" D.string)
         (D.field "title" D.string)
         (D.field "date" D.string)
+        (D.field "category" <| D.list D.string)
 
 
 {-| Make contents inside the _head_ tag.
@@ -90,8 +92,48 @@ viewBody preamble _ =
 
 linkToEntry : Entry -> Html.Styled.Html Never
 linkToEntry article =
-    li [ css [ listStyle none, margin2 (px 8) (px 0) ] ]
-        [ a [ href article.url ]
-            [ text article.title
+    li [ css [ listStyle none, margin2 (px 32) (px 0) ] ]
+        [ div []
+            [ categoryPills article
+            , div [ css [ marginTop <| px 8 ] ]
+                [ a
+                    [ href article.url, css [ fontSize <| em 1.25 ] ]
+                    [ text article.title ]
+                ]
             ]
         ]
+
+
+categoryPills : Entry -> Html.Styled.Html Never
+categoryPills article =
+    div
+        [ css []
+        ]
+    <|
+        List.foldr
+            (::)
+            (List.map
+                (\c ->
+                    span
+                        [ css
+                            [ backgroundColor <| hex "#fff"
+                            , borderRadius <| px 4
+                            , padding2 (px 2) (px 4)
+                            , marginLeft <| px 8
+                            ]
+                        ]
+                    <|
+                        [ text c ]
+                )
+                article.category
+            )
+            [ span
+                [ css
+                    [ backgroundColor <| hex "#397A9D"
+                    , color <| hex "#fff"
+                    , borderRadius <| px 4
+                    , padding2 (px 2) (px 4)
+                    ]
+                ]
+                [ text article.date ]
+            ]
