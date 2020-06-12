@@ -32,7 +32,7 @@ type alias Preamble =
 
 
 type alias Entry =
-    { url : String
+    { path : String
     , title : String
     , date : Posix
     , category : List String
@@ -51,7 +51,7 @@ preambleDecoder =
 entryDecoder : Decoder Entry
 entryDecoder =
     D.map4 Entry
-        (D.field "url" D.string)
+        (D.field "path" D.string)
         (D.field "title" D.string)
         (D.field "date" datetime)
         (D.field "category" <| D.list D.string)
@@ -100,7 +100,7 @@ linkToEntry article =
             [ categoryPills article
             , div [ css [ marginTop <| px 8 ] ]
                 [ a
-                    [ href article.url, css [ fontSize <| em 1.25 ] ]
+                    [ href article.path, css [ fontSize <| em 1.25 ] ]
                     [ text article.title ]
                 ]
             ]

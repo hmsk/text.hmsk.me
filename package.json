@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/hmsk/japonica#readme",
   "devDependencies": {
-    "@hmsk/siteelm": "0.3.0",
+    "@hmsk/siteelm": "0.4.0",
     "elm": "0.19.1-3"
   }
 }

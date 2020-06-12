@@ -28,7 +28,7 @@ main =
 type alias Preamble =
     { title : String
     , date : Posix
-    , url : String
+    , path : String
     , originalUrl : Maybe String
     }
 
@@ -38,7 +38,7 @@ preambleDecoder =
     D.map4 Preamble
         (D.field "title" D.string)
         (D.field "date" datetime)
-        (D.field "url" D.string)
+        (D.field "path" D.string)
         (D.field "original_url" D.string |> D.maybe)
 
 
@@ -49,7 +49,7 @@ viewHead preamble _ =
             preamble.title ++ " | text.hmsk.me"
 
         url =
-            "https://text.hmsk.me/entries" ++ preamble.url
+            "https://text.hmsk.me/entries" ++ preamble.path
     in
     [ Html.title [] title
     , Html.script "https://cdn.iframe.ly/embed.js" ""
