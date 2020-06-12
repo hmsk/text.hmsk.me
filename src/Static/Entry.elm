@@ -8,11 +8,12 @@ import Json.Decode as D exposing (Decoder)
 import Json.Decode.Extra exposing (datetime)
 import Markdown
 import Regex
+import Siteelm.Date exposing (formatDanishDate)
 import Siteelm.Html as Html
 import Siteelm.Html.Attributes exposing (content, property)
 import Siteelm.Page exposing (Page, page)
 import Static.View as View
-import Time exposing (..)
+import Time exposing (Posix)
 
 
 main : Page Preamble
@@ -46,6 +47,7 @@ viewHead preamble _ =
     let
         title =
             preamble.title ++ " | text.hmsk.me"
+
         url =
             "https://text.hmsk.me/entries" ++ preamble.url
     in
@@ -67,7 +69,7 @@ viewBody preamble body =
         [ View.header
         , article [ css [ maxWidth (px 1280), margin auto ] ]
             [ h2 [] [ text preamble.title ]
-            , h3 [] [ text <| dateFormat preamble.date ]
+            , h3 [] [ text <| formatDanishDate preamble.date ]
             , linkForOriginal preamble.originalUrl
             , div
                 [ css [ lineHeight (num 1.8) ]
@@ -77,21 +79,6 @@ viewBody preamble body =
             ]
         , View.footer
         ]
-
-
-dateFormat : Posix -> String
-dateFormat posix =
-    let
-        y =
-            String.fromInt <| toYear utc posix
-
-        m =
-            toHumanMonth <| toMonth utc posix
-
-        d =
-            String.fromInt <| toDay utc posix
-    in
-    String.concat [ m, " ", d, ", ", y ]
 
 
 linkForOriginal : Maybe String -> Html.Styled.Html Never
@@ -105,46 +92,6 @@ linkForOriginal maybeOriginal =
 
         _ ->
             text ""
-
-
-toHumanMonth : Month -> String
-toHumanMonth month =
-    case month of
-        Jan ->
-            "January"
-
-        Feb ->
-            "Feburary"
-
-        Mar ->
-            "March"
-
-        Apr ->
-            "April"
-
-        May ->
-            "May"
-
-        Jun ->
-            "June"
-
-        Jul ->
-            "July"
-
-        Aug ->
-            "August"
-
-        Sep ->
-            "September"
-
-        Oct ->
-            "October"
-
-        Nov ->
-            "November"
-
-        Dec ->
-            "December"
 
 
 type CustomTagType

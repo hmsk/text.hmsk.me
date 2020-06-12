@@ -1,14 +1,17 @@
 module Static.Index exposing (main)
 
-import Css exposing (auto, backgroundColor, block, borderRadius, color, display, em, fontSize, fontWeight, hex, int, listStyle, margin, margin2, marginLeft, marginTop, maxWidth, none, padding, padding2, px)
+import Css exposing (auto, backgroundColor, borderRadius, color, em, fontSize, fontWeight, hex, int, listStyle, margin, margin2, marginLeft, marginTop, maxWidth, none, padding, padding2, px)
 import Html exposing (Html)
 import Html.Styled exposing (a, div, h2, li, main_, span, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (class, css, href)
 import Json.Decode as D exposing (Decoder)
+import Json.Decode.Extra exposing (datetime)
+import Siteelm.Date exposing (formatHyphenatedDate)
 import Siteelm.Html as Html
 import Siteelm.Html.Attributes exposing (content, property)
 import Siteelm.Page exposing (Page, page)
 import Static.View as View
+import Time exposing (Posix)
 
 
 main : Page Preamble
@@ -31,7 +34,7 @@ type alias Preamble =
 type alias Entry =
     { url : String
     , title : String
-    , date : String
+    , date : Posix
     , category : List String
     }
 
@@ -50,7 +53,7 @@ entryDecoder =
     D.map4 Entry
         (D.field "url" D.string)
         (D.field "title" D.string)
-        (D.field "date" D.string)
+        (D.field "date" datetime)
         (D.field "category" <| D.list D.string)
 
 
@@ -135,5 +138,5 @@ categoryPills article =
                     , padding2 (px 2) (px 4)
                     ]
                 ]
-                [ text article.date ]
+                [ text <| formatHyphenatedDate article.date ]
             ]
