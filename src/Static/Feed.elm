@@ -47,7 +47,7 @@ type alias Preamble =
 
 
 type alias Entry =
-    { url : String
+    { path : String
     , title : String
     , date : String
     }
@@ -62,7 +62,7 @@ preambleDecoder =
 entryDecoder : Decoder Entry
 entryDecoder =
     D.map3 Entry
-        (D.field "url" D.string)
+        (D.field "path" D.string)
         (D.field "title" D.string)
         (D.field "date" D.string)
 
@@ -112,8 +112,8 @@ asAtom entry =
     node "entry"
         []
         [ node "title" [] [ text entry.title ]
-        , node "id" [] [ text <| "tag:text.hmsk.me,2020:" ++ entry.url ]
-        , node "link" [ href <| "https://text.hmsk.me/" ++ entry.url, type_ "text/html", rel "alternate" ] []
+        , node "id" [] [ text <| "tag:text.hmsk.me,2020:" ++ entry.path ]
+        , node "link" [ href <| "https://text.hmsk.me/" ++ entry.path, type_ "text/html", rel "alternate" ] []
         , node "updated" [] [ text entry.date ]
         , node "content" [] [ text <| "Content for " ++ entry.title ]
         ]
