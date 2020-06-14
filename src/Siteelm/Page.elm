@@ -4,7 +4,7 @@ import Browser
 import Css exposing (backgroundColor, borderBottom3, borderStyle, color, dashed, fontFamilies, hex, hover, none, px, solid, textDecoration)
 import Css.Global exposing (global, selector)
 import Html exposing (Html)
-import Html.Attributes exposing (href, lang, name, title, type_)
+import Html.Attributes exposing (attribute, href, lang, name, title, type_)
 import Html.Styled exposing (Attribute, fromUnstyled, node, toUnstyled)
 import Html.Styled.Attributes exposing (css)
 import Json.Decode exposing (Decoder, decodeString)
@@ -78,6 +78,10 @@ renderPage head body model =
                         [ Html.meta [ charset "utf-8" ]
                         , Html.link [ href "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap", rel "stylesheet" ]
                         , Html.link [ href "https://text.hmsk.me/feed.xml", rel "alternate", type_ "application/atom+xml", title "Atom" ]
+                        , Html.link [ href "/icons/icon-16.png", rel "icon", type_ "image/png", attribute "sizes" "16x16" ]
+                        , Html.link [ href "/icons/icon-32.png", rel "icon", type_ "image/png", attribute "sizes" "32x32" ]
+                        , Html.link [ href "/icons/icon-96.png", rel "icon", type_ "image/png", attribute "sizes" "96x96" ]
+                        , Html.link [ href "/icons/icon-192.png", rel "icon", type_ "image/png", attribute "sizes" "192x192" ]
                         , Html.meta [ name "viewport", content "width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" ]
                         , Html.meta [ name "author", content "@hmsk / Kengo Hamasaki" ]
                         , Html.meta [ name "theme-color", content "#597B8C" ]
