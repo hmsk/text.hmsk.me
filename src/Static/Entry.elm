@@ -9,6 +9,7 @@ import Json.Decode.Extra exposing (datetime)
 import Markdown
 import Regex
 import Siteelm.Date exposing (formatDanishDate)
+import Siteelm.DesignSystem exposing (PillType(..), pill)
 import Siteelm.Html as Html
 import Siteelm.Html.Attributes exposing (content, property)
 import Siteelm.Page exposing (Page, page)
@@ -30,16 +31,18 @@ type alias Preamble =
     , date : Posix
     , path : String
     , originalUrl : Maybe String
+    , category : List String
     }
 
 
 preambleDecoder : Decoder Preamble
 preambleDecoder =
-    D.map4 Preamble
+    D.map5 Preamble
         (D.field "title" D.string)
         (D.field "date" datetime)
         (D.field "path" D.string)
         (D.field "original_url" D.string |> D.maybe)
+        (D.field "category" <| D.list D.string)
 
 
 viewHead : Preamble -> String -> List (Html Never)
@@ -70,6 +73,10 @@ viewBody preamble body =
         , article [ css [ maxWidth (px 1280), margin auto ] ]
             [ h2 [] [ text preamble.title ]
             , h3 [] [ text <| formatDanishDate preamble.date ]
+            , div [] <|
+                List.map
+                    (\c -> pill Normal [] [ text c ])
+                    preamble.category
             , linkForOriginal preamble.originalUrl
             , div
                 [ css [ lineHeight (num 1.8) ]

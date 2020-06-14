@@ -1,12 +1,13 @@
 module Static.Index exposing (main)
 
-import Css exposing (auto, backgroundColor, borderRadius, color, em, fontSize, fontWeight, hex, int, listStyle, margin, margin2, marginLeft, marginTop, maxWidth, none, padding, padding2, px)
+import Css exposing (auto, em, fontSize, fontWeight, int, listStyle, margin, margin2, marginLeft, marginTop, maxWidth, none, padding, px)
 import Html exposing (Html)
-import Html.Styled exposing (a, div, h2, li, main_, span, text, toUnstyled, ul)
+import Html.Styled exposing (a, div, h2, li, main_, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (class, css, href)
 import Json.Decode as D exposing (Decoder)
 import Json.Decode.Extra exposing (datetime)
 import Siteelm.Date exposing (formatHyphenatedDate)
+import Siteelm.DesignSystem exposing (PillType(..), pill)
 import Siteelm.Html as Html
 import Siteelm.Html.Attributes exposing (content, property)
 import Siteelm.Page exposing (Page, page)
@@ -113,30 +114,7 @@ categoryPills article =
         [ css []
         ]
     <|
-        List.foldr
-            (::)
-            (List.map
-                (\c ->
-                    span
-                        [ css
-                            [ backgroundColor <| hex "#fff"
-                            , borderRadius <| px 4
-                            , padding2 (px 2) (px 4)
-                            , marginLeft <| px 8
-                            ]
-                        ]
-                    <|
-                        [ text c ]
-                )
+        [ pill Inverse [] [ text (formatHyphenatedDate article.date) ] ]
+            ++ List.map
+                (\c -> pill Normal [ marginLeft <| px 8 ] [ text c ])
                 article.category
-            )
-            [ span
-                [ css
-                    [ backgroundColor <| hex "#397A9D"
-                    , color <| hex "#fff"
-                    , borderRadius <| px 4
-                    , padding2 (px 2) (px 4)
-                    ]
-                ]
-                [ text <| formatHyphenatedDate article.date ]
-            ]
