@@ -1,7 +1,7 @@
 module Siteelm.Page exposing (Page, page)
 
 import Browser
-import Css exposing (auto, backgroundColor, baseline, bolder, borderBottom3, borderBox, borderStyle, bottom, boxSizing, color, dashed, display, dotted, em, fontFamilies, fontFamily, fontSize, fontWeight, height, hex, hover, inherit, lineHeight, listItem, margin, none, num, outline, outline3, outlineOffset, padding, padding3, pct, position, px, relative, solid, textDecoration, textDecoration2, textTransform, top, underline, verticalAlign)
+import Css exposing (auto, backgroundColor, baseline, bolder, borderBottom3, borderBox, borderStyle, bottom, boxSizing, color, dashed, display, dotted, em, fontFamilies, fontFamily, fontSize, fontWeight, height, hex, hover, inherit, lineHeight, listItem, margin, marginBottom, none, num, outline, outline3, outlineOffset, padding, padding2, padding3, pct, position, px, relative, solid, textDecoration, textDecoration2, textTransform, top, underline, verticalAlign)
 import Css.Global exposing (Snippet, global, selector)
 import Html exposing (Html)
 import Html.Attributes exposing (attribute, href, lang, name, title, type_)
@@ -106,6 +106,7 @@ bodyStyle =
         [ fontFamilies [ "'M PLUS Rounded 1c'", "sans-serif" ]
         , color <| hex "#397A9D"
         , backgroundColor <| hex "#EAEEF0"
+        , padding2 (em 2) (px 0)
         ]
 
 

@@ -1,6 +1,7 @@
 module Static.Index exposing (main)
 
-import Css exposing (auto, em, fontSize, fontWeight, int, listStyle, margin, margin2, marginLeft, marginTop, maxWidth, none, padding, px)
+import Css exposing (auto, em, fontSize, fontWeight, int, lineHeight, listStyle, margin, margin2, margin3, marginLeft, marginTop, maxWidth, none, num, padding, px)
+import Css.Global exposing (children, descendants, global, mediaQuery, typeSelector)
 import Html exposing (Html)
 import Html.Styled exposing (a, div, h2, li, main_, text, toUnstyled, ul)
 import Html.Styled.Attributes exposing (class, css, href)
@@ -65,6 +66,7 @@ viewHead preamble _ =
     [ Html.title [] preamble.title
     , Html.meta [ Siteelm.Html.Attributes.property "og:url", Siteelm.Html.Attributes.content "https://text.hmsk.me/" ]
     , Html.meta [ Siteelm.Html.Attributes.property "og:title", Siteelm.Html.Attributes.content "text.hmsk.me" ]
+    , toUnstyled mainStyle
     ]
 
 
@@ -75,13 +77,8 @@ viewBody preamble _ =
     List.map
         toUnstyled
         [ View.header
-        , main_
-            [ css
-                [ maxWidth (px 1280)
-                , margin auto
-                ]
-            ]
-            [ h2 [ css [ fontWeight (int 500) ] ] [ text "All entries" ]
+        , main_ []
+            [ h2 [] [ text "All entries" ]
             , div [ class "inner" ]
                 [ ul [ css [ padding (px 0) ] ]
                     (List.map
@@ -91,6 +88,29 @@ viewBody preamble _ =
                 ]
             ]
         , View.footer
+        ]
+
+
+mainStyle : Html.Styled.Html msg
+mainStyle =
+    global
+        [ typeSelector "main"
+            [ children
+                [ typeSelector "h2" [ fontWeight (int 500) ]
+                ]
+            , descendants [ typeSelector "a" [ lineHeight (num 1.5) ] ]
+            ]
+        , mediaQuery [ "screen and (min-width: 680px)" ]
+            [ typeSelector "main"
+                [ maxWidth (px 680)
+                , margin auto
+                ]
+            ]
+        , mediaQuery [ "screen and (max-width: 680px)" ]
+            [ typeSelector "main"
+                [ margin3 (em 1.5) (px 40) (px 0)
+                ]
+            ]
         ]
 
 

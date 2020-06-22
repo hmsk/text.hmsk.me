@@ -1,6 +1,6 @@
 module Static.View exposing (footer, header)
 
-import Css exposing (..)
+import Css exposing (borderStyle, center, color, fontSize, fontWeight, hex, int, marginTop, none, px, textAlign, textDecoration)
 import Html.Styled exposing (Html, a, footer, header, text)
 import Html.Styled.Attributes exposing (css, href)
 
@@ -30,6 +30,8 @@ footer : Html Never
 footer =
     Html.Styled.footer
         [ css
-            [ textAlign center, marginTop (px 48) ]
+            [ textAlign center
+            , marginTop (px 48)
+            ]
         ]
         [ text "© 2012-2020 Kengo Hamasaki / @hmsk" ]
