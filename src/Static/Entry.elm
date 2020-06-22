@@ -1,9 +1,10 @@
 module Static.Entry exposing (main)
 
-import Css exposing (..)
+import Css exposing (auto, backgroundColor, block, display, em, hex, lineHeight, margin2, margin3, maxWidth, num, overflow, padding, padding2, px)
+import Css.Global exposing (children, descendants, global, mediaQuery, typeSelector)
 import Html exposing (Html)
 import Html.Styled exposing (a, article, div, fromUnstyled, h2, h3, p, text, toUnstyled)
-import Html.Styled.Attributes exposing (css, href)
+import Html.Styled.Attributes exposing (class, href)
 import Json.Decode as D exposing (Decoder)
 import Json.Decode.Extra exposing (datetime)
 import Markdown
@@ -58,6 +59,7 @@ viewHead preamble _ =
     , Html.script "https://cdn.iframe.ly/embed.js" ""
     , Html.meta [ Siteelm.Html.Attributes.property "og:title", Siteelm.Html.Attributes.content title ]
     , Html.meta [ Siteelm.Html.Attributes.property "og:url", Siteelm.Html.Attributes.content url ]
+    , toUnstyled articleStyle
     ]
 
 
@@ -70,21 +72,81 @@ viewBody preamble body =
     List.map
         toUnstyled
         [ View.header
-        , article [ css [ maxWidth (px 1280), margin auto ] ]
+        , article []
             [ h2 [] [ text preamble.title ]
             , h3 [] [ text <| formatDanishDate preamble.date ]
-            , div [] <|
+            , div [ class "pills" ] <|
                 List.map
                     (\c -> pill Normal [] [ text c ])
                     preamble.category
             , linkForOriginal preamble.originalUrl
-            , div
-                [ css [ lineHeight (num 1.8) ]
-                ]
-                [ fromUnstyled <| Markdown.toHtmlWith markedOptions [] processedBody
-                ]
+            , fromUnstyled <| Markdown.toHtmlWith markedOptions [] processedBody
             ]
         , View.footer
+        ]
+
+
+articleStyle : Html.Styled.Html msg
+articleStyle =
+    global
+        [ typeSelector "article"
+            [ descendants
+                [ typeSelector "p, ul, h2, h3, .pills"
+                    [ maxWidth (px 680)
+                    , lineHeight (num 1.8)
+                    ]
+                , typeSelector "a"
+                    [ Css.property "word-break" "break-all"
+                    ]
+                , typeSelector "pre"
+                    [ backgroundColor <| hex "#fff"
+                    , padding2 (em 1.5) (px 0)
+                    , lineHeight (num 1.5)
+                    , overflow auto
+                    , children
+                        [ typeSelector "code"
+                            [ display block
+                            ]
+                        ]
+                    ]
+                , mediaQuery [ "screen and (min-width: 680px)" ]
+                    [ typeSelector "p, ul, h2, h3, .pills"
+                        [ margin3 (em 1.5) auto (px 0)
+                        ]
+                    , typeSelector "pre"
+                        [ children
+                            [ typeSelector "code"
+                                [ maxWidth (px 680)
+                                , margin2 (px 0) auto
+                                ]
+                            ]
+                        ]
+                    ]
+                , mediaQuery [ "screen and (max-width: 680px)" ]
+                    [ typeSelector "p, ul, h2, h3, .pills"
+                        [ margin3 (em 1.5) (px 40) (px 0)
+                        ]
+                    , typeSelector "pre"
+                        [ children
+                            [ typeSelector "code"
+                                [ margin2 (px 0) (px 40)
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            , descendants
+                [ typeSelector "p"
+                    [ children
+                        [ typeSelector "code"
+                            [ backgroundColor <| hex "#fff"
+                            , padding (px 4)
+                            , Css.property "word-break" "break-all"
+                            ]
+                        ]
+                    ]
+                ]
+            ]
         ]
 
 
