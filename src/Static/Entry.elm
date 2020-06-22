@@ -1,6 +1,25 @@
 module Static.Entry exposing (main)
 
-import Css exposing (auto, backgroundColor, block, display, em, hex, lineHeight, margin2, margin3, maxWidth, num, overflow, padding, padding2, px)
+import Css
+    exposing
+        ( auto
+        , backgroundColor
+        , block
+        , display
+        , em
+        , hex
+        , lineHeight
+        , margin2
+        , margin3
+        , maxWidth
+        , num
+        , overflow
+        , padding
+        , padding2
+        , pct
+        , px
+        , width
+        )
 import Css.Global exposing (children, descendants, global, mediaQuery, typeSelector)
 import Html exposing (Html)
 import Html.Styled exposing (a, article, div, fromUnstyled, h2, h3, p, text, toUnstyled)
@@ -91,7 +110,7 @@ articleStyle =
     global
         [ typeSelector "article"
             [ descendants
-                [ typeSelector "p, ul, h2, h3, .pills"
+                [ typeSelector "p, ul, h1, h2, h3, .pills"
                     [ maxWidth (px 680)
                     , lineHeight (num 1.8)
                     ]
@@ -110,7 +129,7 @@ articleStyle =
                         ]
                     ]
                 , mediaQuery [ "screen and (min-width: 680px)" ]
-                    [ typeSelector "p, ul, h2, h3, .pills"
+                    [ typeSelector "p, ul, h1, h2, h3, .pills"
                         [ margin3 (em 1.5) auto (px 0)
                         ]
                     , typeSelector "pre"
@@ -123,7 +142,7 @@ articleStyle =
                         ]
                     ]
                 , mediaQuery [ "screen and (max-width: 680px)" ]
-                    [ typeSelector "p, ul, h2, h3, .pills"
+                    [ typeSelector "p, ul, h1, h2, h3, .pills"
                         [ margin3 (em 1.5) (px 40) (px 0)
                         ]
                     , typeSelector "pre"
@@ -134,14 +153,17 @@ articleStyle =
                             ]
                         ]
                     ]
-                ]
-            , descendants
-                [ typeSelector "p"
+                , typeSelector "p"
                     [ children
                         [ typeSelector "code"
                             [ backgroundColor <| hex "#fff"
                             , padding (px 4)
                             , Css.property "word-break" "break-all"
+                            ]
+                        ]
+                    , descendants
+                        [ typeSelector "img"
+                            [ width (pct 100)
                             ]
                         ]
                     ]
