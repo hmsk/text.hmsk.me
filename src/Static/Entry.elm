@@ -197,13 +197,13 @@ replacer tag original =
         regexAndTag =
             case tag of
                 Amazon ->
-                    ( "\\[asin:(.+):detail\\]", amazon )
+                    ( "\\[asin:(.+):detail\\]\\n", amazon )
 
                 Instagram ->
-                    ( "\\[instagram:(.+)\\]", instagram )
+                    ( "\\[instagram:(.+)\\]\\n", instagram )
 
                 EmbedCard ->
-                    ( "\\[embed:(.+)\\]", embedCard )
+                    ( "\\[embed:(.+)\\]\\n", embedCard )
     in
     case Regex.fromString <| Tuple.first regexAndTag of
         Nothing ->
@@ -222,7 +222,7 @@ amazon list =
         Just a ->
             case a of
                 Just b ->
-                    "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ b ++ "'}\"></div>"
+                    "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ b ++ "'}\"></div>\n"
 
                 _ ->
                     "Nothing"
@@ -237,7 +237,7 @@ instagram list =
         Just a ->
             case a of
                 Just b ->
-                    "<div data-elm-module=\"Dynamic.Instagram\" data-flags=\"{ id: '" ++ b ++ "'}\"></div>"
+                    "<div data-elm-module=\"Dynamic.Instagram\" data-flags=\"{ id: '" ++ b ++ "'}\"></div>\n"
 
                 _ ->
                     "Nothing"
@@ -252,7 +252,7 @@ embedCard list =
         Just a ->
             case a of
                 Just b ->
-                    "<div data-elm-module=\"Dynamic.EmbedCard\" data-flags=\"{ url: '" ++ b ++ "', embed: '' }\"></div>"
+                    "<div data-elm-module=\"Dynamic.EmbedCard\" data-flags=\"{ url: '" ++ b ++ "', embed: '' }\"></div>\n"
 
                 _ ->
                     "Nothing"
