@@ -1,8 +1,8 @@
 module Static.View exposing (footer, header)
 
 import Css exposing (borderStyle, center, color, fontSize, fontWeight, hex, int, marginTop, none, px, textAlign, textDecoration)
-import Html.Styled exposing (Html, a, footer, header, text)
-import Html.Styled.Attributes exposing (css, href)
+import Html.Styled exposing (Html, a, footer, header, span, text)
+import Html.Styled.Attributes exposing (css, href, rel, target)
 
 
 header : Html.Styled.Html Never
@@ -34,4 +34,6 @@ footer =
             , marginTop (px 48)
             ]
         ]
-        [ text "© 2012-2020 Kengo Hamasaki / @hmsk" ]
+        [ span [] [ text "© 2012-2020 " ]
+        , a [ href "https://hmsk.me", target "_blank", rel "noopener" ] [ text "Kengo Hamasaki / @hmsk" ]
+        ]
