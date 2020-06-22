@@ -6,7 +6,6 @@ import Css
         , backgroundColor
         , block
         , display
-        , em
         , hex
         , lineHeight
         , margin2
@@ -18,6 +17,7 @@ import Css
         , padding2
         , pct
         , px
+        , rem
         , width
         )
 import Css.Global exposing (children, descendants, global, mediaQuery, typeSelector)
@@ -119,7 +119,7 @@ articleStyle =
                     ]
                 , typeSelector "pre"
                     [ backgroundColor <| hex "#fff"
-                    , padding2 (em 1.5) (px 0)
+                    , padding2 (rem 1.5) (px 0)
                     , lineHeight (num 1.5)
                     , overflow auto
                     , children
@@ -130,7 +130,7 @@ articleStyle =
                     ]
                 , mediaQuery [ "screen and (min-width: 680px)" ]
                     [ typeSelector "p, ul, h1, h2, h3, .pills"
-                        [ margin3 (em 1.5) auto (px 0)
+                        [ margin3 (rem 1.5) auto (px 0)
                         ]
                     , typeSelector "pre"
                         [ children
@@ -143,12 +143,12 @@ articleStyle =
                     ]
                 , mediaQuery [ "screen and (max-width: 680px)" ]
                     [ typeSelector "p, ul, h1, h2, h3, .pills"
-                        [ margin3 (em 1.5) (px 40) (px 0)
+                        [ margin3 (rem 1.5) (rem 1.5) (px 0)
                         ]
                     , typeSelector "pre"
                         [ children
                             [ typeSelector "code"
-                                [ margin2 (px 0) (px 40)
+                                [ margin2 (px 0) (rem 1.5)
                                 ]
                             ]
                         ]

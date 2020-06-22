@@ -1,6 +1,6 @@
 module Static.Index exposing (main)
 
-import Css exposing (auto, em, fontSize, fontWeight, int, lineHeight, listStyle, margin, margin2, margin3, marginLeft, marginTop, maxWidth, none, num, padding, px)
+import Css exposing (auto, em, fontSize, fontWeight, int, lineHeight, listStyle, margin, margin2, margin3, marginLeft, marginTop, maxWidth, none, num, padding, px, rem)
 import Css.Global exposing (children, descendants, global, mediaQuery, typeSelector)
 import Html exposing (Html)
 import Html.Styled exposing (a, div, h2, li, main_, text, toUnstyled, ul)
@@ -108,7 +108,7 @@ mainStyle =
             ]
         , mediaQuery [ "screen and (max-width: 680px)" ]
             [ typeSelector "main"
-                [ margin3 (em 1.5) (px 40) (px 0)
+                [ margin3 (rem 1.5) (rem 1.5) (px 0)
                 ]
             ]
         ]
