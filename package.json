@@ -1,5 +1,6 @@
 {
   "name": "japonica",
+  "private": true,
   "version": "0.0.1",
   "description": "Static blog website with Elm, siteelm",
   "engines": {
