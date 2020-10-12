@@ -3,3 +3,7 @@
   publish = "dist"
 [build.environment]
   NODE_VERSION = "12.16.1"
+[[redirects]]
+  from = "/feed"
+  to = "/feed.xml"
+  status = 200
