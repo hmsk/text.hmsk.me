@@ -36,7 +36,7 @@ view model =
             "https://instagram.com/p/" ++ model.id ++ "/"
 
         imageUrl =
-            "https://instagram.com/p/" ++ model.id ++ "/media/?size=l"
+            "/uploads/" ++ model.id ++ ".jpg"
     in
     p []
         [ a
