@@ -110,7 +110,7 @@ articleStyle =
     global
         [ typeSelector "article"
             [ descendants
-                [ typeSelector "p, ul, h1, h2, h3, .pills"
+                [ typeSelector "p, ul, h1, h2, h3, h4, table, .pills"
                     [ maxWidth (px 680)
                     , lineHeight (num 1.8)
                     ]
@@ -129,7 +129,7 @@ articleStyle =
                         ]
                     ]
                 , mediaQuery [ "screen and (min-width: 680px)" ]
-                    [ typeSelector "p, ul, h1, h2, h3, .pills"
+                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .pills"
                         [ margin3 (rem 1.5) auto (px 0)
                         ]
                     , typeSelector "pre"
@@ -142,7 +142,7 @@ articleStyle =
                         ]
                     ]
                 , mediaQuery [ "screen and (max-width: 680px)" ]
-                    [ typeSelector "p, ul, h1, h2, h3, .pills"
+                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .pills"
                         [ margin3 (rem 1.5) (rem 1.5) (px 0)
                         ]
                     , typeSelector "pre"
