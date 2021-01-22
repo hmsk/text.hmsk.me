@@ -34,6 +34,6 @@ footer =
             , marginTop (px 48)
             ]
         ]
-        [ span [] [ text "© 2012-2020 " ]
+        [ span [] [ text "© 2012-2021 " ]
         , a [ href "https://hmsk.me", target "_blank", rel "noopener" ] [ text "Kengo Hamasaki / @hmsk" ]
         ]
