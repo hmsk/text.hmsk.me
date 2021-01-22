@@ -94,7 +94,7 @@ viewBody preamble body =
         , article []
             [ h2 [] [ text preamble.title ]
             , h3 [] [ text <| formatDanishDate preamble.date ]
-            , div [ class "pills" ] <|
+            , div [ class "content pills" ] <|
                 List.map
                     (\c -> pill Normal [] [ text c ])
                     preamble.category
@@ -110,7 +110,7 @@ articleStyle =
     global
         [ typeSelector "article"
             [ descendants
-                [ typeSelector "p, ul, h1, h2, h3, h4, table, .pills"
+                [ typeSelector "p, ul, h1, h2, h3, h4, table, .content"
                     [ maxWidth (px 680)
                     , lineHeight (num 1.8)
                     ]
@@ -129,7 +129,7 @@ articleStyle =
                         ]
                     ]
                 , mediaQuery [ "screen and (min-width: 680px)" ]
-                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .pills"
+                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .content"
                         [ margin3 (rem 1.5) auto (px 0)
                         ]
                     , typeSelector "pre"
@@ -142,7 +142,7 @@ articleStyle =
                         ]
                     ]
                 , mediaQuery [ "screen and (max-width: 680px)" ]
-                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .pills"
+                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .content"
                         [ margin3 (rem 1.5) (rem 1.5) (px 0)
                         ]
                     , typeSelector "pre"
@@ -197,7 +197,7 @@ replacer tag original =
         regexAndTag =
             case tag of
                 Amazon ->
-                    ( "\\[asin:(.+):detail\\]\\n", amazon )
+                    ( "\\[asin:(.+)\\]\\n", amazon )
 
                 Instagram ->
                     ( "\\[instagram:(.+)\\]\\n", instagram )
@@ -222,7 +222,12 @@ amazon list =
         Just a ->
             case a of
                 Just b ->
-                    "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ b ++ "'}\"></div>\n"
+                    case String.split ":" b of
+                        [ asin, title ] ->
+                            "<div data-elm-module=\"Dynamic.Amazon\" data-flags=\"{ asin: '" ++ asin ++ "', title: '" ++ title ++ "'}\"></div>\n"
+
+                        _ ->
+                            "Format Error for Dynamic.Amazon"
 
                 _ ->
                     "Nothing"

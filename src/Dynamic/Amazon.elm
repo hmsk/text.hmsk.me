@@ -1,12 +1,15 @@
 module Dynamic.Amazon exposing (main)
 
 import Browser
-import Html exposing (Html, a, p, text)
-import Html.Attributes exposing (href, target)
+import Css exposing (backgroundColor, block, bold, border3, display, displayFlex, dotted, fontWeight, height, hex, hover, justifyContent, marginBottom, none, paddingLeft, paddingTop, px, solid, spaceBetween, textDecoration)
+import Html exposing (Html)
+import Html.Styled exposing (a, div, img, text, toUnstyled)
+import Html.Styled.Attributes exposing (class, css, href, src, target)
 
 
 type alias Model =
     { asin : String
+    , title : String
     }
 
 
@@ -35,11 +38,46 @@ view model =
         url =
             "http://www.amazon.co.jp/dp/" ++ model.asin ++ "/ref=nosim?tag=libe-22"
     in
-    p []
-        [ a
-            [ href url
+    toUnstyled <|
+        a
+            [ class "content"
+            , href url
             , target "_blank"
+            , css
+                [ display block
+                , textDecoration none
+                , border3 (px 1) solid <| hex "#DEDEDE"
+                , backgroundColor <| hex "#FFF"
+                , height (px 140)
+                , hover
+                    [ border3 (px 1) dotted <| hex "#397A9D"
+                    ]
+                ]
             ]
-            [ text "商品へのリンク"
+            [ div
+                [ css
+                    [ displayFlex
+                    , justifyContent spaceBetween
+                    ]
+                ]
+                [ div
+                    [ css
+                        [ paddingLeft (px 16)
+                        , paddingTop (px 40)
+                        , fontWeight bold
+                        ]
+                    ]
+                    [ img [ src "https://www.amazon.co.jp/favicon.ico", css [ display block, height (px 16), marginBottom (px 2) ] ] []
+                    , text model.title
+                    ]
+                , div []
+                    [ img
+                        [ css
+                            [ height (px 138)
+                            ]
+                        , src <| "//ws-fe.amazon-adsystem.com/widgets/q?&MarketPlace=JP&ASIN=" ++ model.asin ++ "&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL280_&tag=libe-22"
+                        ]
+                        []
+                    ]
+                ]
             ]
-        ]
