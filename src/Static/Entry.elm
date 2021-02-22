@@ -5,9 +5,12 @@ import Css
         ( auto
         , backgroundColor
         , block
+        , borderLeft3
+        , color
         , display
         , hex
         , lineHeight
+        , margin
         , margin2
         , margin3
         , maxWidth
@@ -18,6 +21,7 @@ import Css
         , pct
         , px
         , rem
+        , solid
         , width
         )
 import Css.Global exposing (children, descendants, global, mediaQuery, typeSelector)
@@ -76,8 +80,8 @@ viewHead preamble _ =
     in
     [ Html.title [] title
     , Html.script "https://cdn.iframe.ly/embed.js" ""
-    , Html.meta [ Siteelm.Html.Attributes.property "og:title", Siteelm.Html.Attributes.content title ]
-    , Html.meta [ Siteelm.Html.Attributes.property "og:url", Siteelm.Html.Attributes.content url ]
+    , Html.meta [ property "og:title", content title ]
+    , Html.meta [ property "og:url", content url ]
     , toUnstyled articleStyle
     ]
 
@@ -110,7 +114,7 @@ articleStyle =
     global
         [ typeSelector "article"
             [ descendants
-                [ typeSelector "p, ul, h1, h2, h3, h4, table, .content"
+                [ typeSelector "p, ul, h1, h2, h3, h4, table, blockquote, .content"
                     [ maxWidth (px 680)
                     , lineHeight (num 1.8)
                     ]
@@ -128,8 +132,19 @@ articleStyle =
                             ]
                         ]
                     ]
+                , typeSelector "blockquote"
+                    [ backgroundColor <| hex "#fff"
+                    , borderLeft3 (px 8) solid (hex "#397A9D")
+                    , color (hex "#397A9D")
+                    , padding2 (rem 0.5) (rem 1.0)
+                    , lineHeight (num 1.5)
+                    , children
+                        [ typeSelector "p"
+                            [ margin (px 0) ]
+                        ]
+                    ]
                 , mediaQuery [ "screen and (min-width: 680px)" ]
-                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .content"
+                    [ typeSelector "p, ul, h1, h2, h3, h4, table, blockquote, .content"
                         [ margin3 (rem 1.5) auto (px 0)
                         ]
                     , typeSelector "pre"
@@ -142,7 +157,7 @@ articleStyle =
                         ]
                     ]
                 , mediaQuery [ "screen and (max-width: 680px)" ]
-                    [ typeSelector "p, ul, h1, h2, h3, h4, table, .content"
+                    [ typeSelector "p, ul, h1, h2, h3, h4, table, blockquote, .content"
                         [ margin3 (rem 1.5) (rem 1.5) (px 0)
                         ]
                     , typeSelector "pre"
