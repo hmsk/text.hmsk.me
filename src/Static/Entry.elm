@@ -197,13 +197,13 @@ replacer tag original =
         regexAndTag =
             case tag of
                 Amazon ->
-                    ( "\\[asin:(.+)\\]\\n", amazon )
+                    ( "\\[asin:(.+)\\](\\n|$)", amazon )
 
                 Instagram ->
-                    ( "\\[instagram:(.+)\\]\\n", instagram )
+                    ( "\\[instagram:(.+)\\](\\n|$)", instagram )
 
                 EmbedCard ->
-                    ( "\\[embed:(.+)\\]\\n", embedCard )
+                    ( "\\[embed:(.+)\\](\\n|$)", embedCard )
     in
     case Regex.fromString <| Tuple.first regexAndTag of
         Nothing ->
