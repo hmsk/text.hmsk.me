@@ -1,7 +1,7 @@
 module Dynamic.Amazon exposing (main)
 
 import Browser
-import Css exposing (backgroundColor, block, bold, border3, display, displayFlex, dotted, fontWeight, height, hex, hover, justifyContent, marginBottom, none, paddingLeft, paddingTop, px, solid, spaceBetween, textDecoration)
+import Css exposing (alignItems, backgroundColor, block, bold, border3, center, display, displayFlex, dotted, fontWeight, height, hex, hover, justifyContent, marginBottom, none, paddingLeft, paddingRight, px, solid, spaceBetween, textDecoration)
 import Html exposing (Html)
 import Html.Styled exposing (a, div, img, text, toUnstyled)
 import Html.Styled.Attributes exposing (class, css, href, src, target)
@@ -58,12 +58,13 @@ view model =
                 [ css
                     [ displayFlex
                     , justifyContent spaceBetween
+                    , alignItems center
                     ]
                 ]
                 [ div
                     [ css
                         [ paddingLeft (px 16)
-                        , paddingTop (px 40)
+                        , paddingRight (px 16)
                         , fontWeight bold
                         ]
                     ]
