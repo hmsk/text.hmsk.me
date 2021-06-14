@@ -35,5 +35,5 @@ footer =
             ]
         ]
         [ span [] [ text "© 2012-2021 " ]
-        , a [ href "/more" ] [ text "Kengo Hamasaki / @hmsk が書いています" ]
+        , a [ href "/more" ] [ text "@hmsk が書いています" ]
         ]

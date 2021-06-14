@@ -1,6 +1,6 @@
 ---
 module: Static.Entry
-title: hmsk
+title: '@hmsk'
 category: []
 date: 2021-06-07
 ---
@@ -11,7 +11,7 @@ date: 2021-06-07
 
 [embed:https://withpersona.com/]
 
-学校は北九州高専、電気通信大学、同大学院（中退）に通っていました。ほか、学歴や経歴などの細かな外形的な情報で公開可能なものはすべて LinkedIn に残しています。
+学校は北九州高専、電気通信大学、同大学院（中退）に通っていました。ほか、学歴や経歴などの外形的で公開可能な情報はすべて LinkedIn に残しています。
 
 [embed:https://www.linkedin.com/in/hmsk/]
 
@@ -47,6 +47,7 @@ date: 2021-06-07
 
 また、人様のポッドキャストに何度か呼んでもらったことがあります。得意ではないけれど、人と話すことは好きなので呼んでください。
 
+[embed:https://anchor.fm/background-radio/episodes/Background-radio-ep-23-hmsk-e12f27g]
 [embed:https://ossan.fm/episode/127]
 [embed:https://ossan.fm/episode/126]
 [embed:https://ossan.fm/episode/65]
