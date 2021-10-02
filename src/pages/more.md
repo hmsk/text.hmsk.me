@@ -1,6 +1,6 @@
 ---
 module: Static.Entry
-title: '@hmsk'
+title: "@hmsk"
 category: []
 date: 2021-06-07
 ---
@@ -79,3 +79,7 @@ date: 2021-06-07
 ## Twitter などウェブ上でのアカウント
 
 [embed:https://hmsk.me]
+
+## その他
+
+[楽しんだもの](/records/entertainment)
