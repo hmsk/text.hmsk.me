@@ -2,36 +2,52 @@ module Static.Record exposing (main)
 
 import Css
     exposing
-        ( auto
+        ( absolute
+        , auto
         , backgroundColor
         , block
         , borderLeft3
+        , borderRadius
+        , bottom
         , color
+        , column
+        , cursor
         , display
+        , displayFlex
+        , flexDirection
+        , fontSize
         , hex
         , lineHeight
         , margin
         , margin2
         , margin3
+        , marginBottom
+        , marginLeft
+        , marginTop
         , maxWidth
+        , none
         , num
         , overflow
         , padding
         , padding2
         , pct
+        , pointer
+        , position
         , px
+        , relative
         , rem
         , solid
+        , vw
         , width
         )
 import Css.Global exposing (children, descendants, global, mediaQuery, typeSelector)
 import Html exposing (Html)
-import Html.Styled exposing (a, article, h2, table, td, text, toUnstyled, tr)
-import Html.Styled.Attributes exposing (href, target)
+import Html.Styled exposing (a, article, div, h2, p, span, text, toUnstyled)
+import Html.Styled.Attributes exposing (class, href, target)
 import Json.Decode as D exposing (Decoder)
 import Json.Decode.Extra exposing (datetime)
-import Regex exposing (Regex)
-import Siteelm.Date exposing (formatDanishDate)
+import Regex
+import Siteelm.Date exposing (formatHyphenatedDate)
 import Siteelm.DesignSystem exposing (PillType(..), pill)
 import Siteelm.Html as Html
 import Siteelm.Html.Attributes exposing (content, property)
@@ -60,7 +76,7 @@ type alias Log =
     , date : Posix
     , type_ : String
     , url : Maybe String
-    , note : Maybe String
+    , comment : Maybe String
     }
 
 
@@ -71,7 +87,7 @@ logDecoder =
         (D.field "date" datetime)
         (D.field "type" D.string)
         (D.field "url" D.string |> D.maybe)
-        (D.field "note" D.string |> D.maybe)
+        (D.field "comment" D.string |> D.maybe)
 
 
 preambleDecoder : Decoder Preamble
@@ -98,13 +114,14 @@ viewHead preamble _ =
 
 
 viewBody : Preamble -> String -> List (Html Never)
-viewBody preamble _ =
+viewBody preamble body =
     List.map
         toUnstyled
         [ View.header
         , article []
             [ h2 [] [ text <| "records/" ++ preamble.category ]
-            , table [] <| List.map extractLog preamble.logs
+            , p [] [ text body ]
+            , div [ class <| "content tableIsh" ++ preamble.category ] <| List.map extractLog preamble.logs
             ]
         , View.footer
         ]
@@ -112,14 +129,16 @@ viewBody preamble _ =
 
 extractLog : Log -> Html.Styled.Html msg
 extractLog log =
-    tr []
-        [ td [] [ text <| formatDanishDate log.date ]
-        , td []
-            [ pill Inverse [] [ text log.type_ ]
+    div [ class "tableIsh-row" ]
+        [ div [ class "tableIsh-row-left" ]
+            [ div []
+                [ pill Inverse [] [ text <| formatHyphenatedDate log.date ]
+                ]
+            , div []
+                [ pill Normal [] [ text log.type_ ]
+                ]
             ]
-        , td []
-            [ titleWithLink log
-            ]
+        , div [] <| titleWithLink log :: commentIfExists log
         ]
 
 
@@ -139,6 +158,20 @@ titleWithLink { url, title } =
 
         _ ->
             text title
+
+
+commentIfExists : Log -> List (Html.Styled.Html msg)
+commentIfExists { comment } =
+    case comment of
+        Just theComment ->
+            [ span [ class "comment" ]
+                [ text "💬"
+                , div [ class "comment-content" ] [ text theComment ]
+                ]
+            ]
+
+        _ ->
+            []
 
 
 articleStyle : Html.Styled.Html msg
@@ -214,6 +247,43 @@ articleStyle =
                             ]
                         ]
                     ]
+
+                -- For Record.elm only start
+                , typeSelector "div.tableIsh"
+                    []
+                , typeSelector "div.tableIsh-row"
+                    [ displayFlex ]
+                , typeSelector "div.tableIsh-row + div.tableIsh-row"
+                    [ marginTop (px 16) ]
+                , typeSelector "div.tableIsh-row-left"
+                    [ displayFlex, width (px 180) ]
+                , typeSelector "div.tableIsh-row-left > div + div"
+                    [ margin2 (px 0) (px 8)
+                    ]
+                , typeSelector "div.tableIsh-row .comment"
+                    [ marginLeft (px 8)
+                    , cursor pointer
+                    , position relative
+                    ]
+                , typeSelector "div.tableIsh-row .comment:hover > .comment-content"
+                    [ display block ]
+                , typeSelector "div.tableIsh-row .comment-content"
+                    [ display none
+                    , position absolute
+                    , backgroundColor (hex "#397a9dee")
+                    , color (hex "#fff")
+                    , borderRadius (px 12)
+                    , padding (px 12)
+                    , fontSize (rem 0.8)
+                    , bottom (px 24)
+                    ]
+                , mediaQuery [ "screen and (max-width: 680px)" ]
+                    [ typeSelector "div.tableIsh-row" [ flexDirection column ]
+                    , typeSelector "div.tableIsh-row-left" [ marginBottom (px 4) ]
+                    , typeSelector "div.tableIsh-row .comment-content" [ width (vw 80) ]
+                    ]
+
+                -- For Record.elm only end
                 ]
             ]
         ]
