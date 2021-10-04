@@ -2,6 +2,11 @@
 module: Static.Record
 category: entertainment
 logs:
+  - title: 僕のヒーローアカデミア 32
+    date: 2021-10-03
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09DK9R6FS
+    comment: 一気に新章感ある。最後のコマでぶわっときた。
   - title: はしっこアンサンブル 7
     date: 2021-10-01
     type: Manga
