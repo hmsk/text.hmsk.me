@@ -2,6 +2,31 @@
 module: Static.Record
 category: entertainment
 logs:
+  - title: Squid Game
+    date: 2021-10-16
+    type: Video
+    url: https://www.netflix.com/title/81040344
+    comment: 既視感が多々あったけど楽しめた。反応を待って続きを作るんだろうなという終わり方。
+  - title: 夢中さ、きみに。
+    date: 2021-10-16
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B07VTLL44K
+    commemnt: 和山やま作品に今後も癒やしてもらうのだろうと確信する
+  - title: 二月の勝者 ―絶対合格の教室― 13
+    date: 2021-10-12
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09H6VD2M8
+    commemnt:
+  - title: おかえりアリス 3
+    date: 2021-10-09
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09H6YN5T7
+    commemnt:
+  - title: 女の園の星 1, 2
+    date: 2021-10-08
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B089SNF6PZ
+    commemnt: 思ったよりギャグが淡々と続いていて、いちいち笑ってしまう
   - title: 僕のヒーローアカデミア 32
     date: 2021-10-03
     type: Manga
@@ -52,6 +77,11 @@ logs:
     type: Manga
     url: https://www.amazon.co.jp/gp/product/B09FSSFXVH
     comment:
+  - title: Twelve Minutes
+    date: 2021-09-13
+    type: Game
+    url: https://store.steampowered.com/app/1097200/Twelve_Minutes/
+    comment: 夫婦でわいわいやれるボリュームで良かった。総じて話が悲しいのが辛い。
 ---
 
 観たもの、聴いたもの、読んだもの。
