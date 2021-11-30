@@ -47,7 +47,7 @@ logs:
     type: Manga
     url: https://www.amazon.co.jp/dp/B09DCLM6LV
     comment: 軽い気持ちで読めなくなってる
-  - title: 惰性67パーセント
+  - title: 惰性67パーセント 8
     date: 2021-10-18
     type: Manga
     url: https://www.amazon.co.jp/dp/B09HQM1LYQ
