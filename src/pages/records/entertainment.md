@@ -6,22 +6,22 @@ logs:
     date: 2021-11-30
     type: Manga
     url: https://www.amazon.co.jp/dp/B09LM58R4W
-    commemnt: 事件の記憶が薄まってきて母子のいずれにも同情することもできなくなり、父親を気の毒に思うだけになってきた
+    comment: 事件の記憶が薄まってきて母子のいずれにも同情することもできなくなり、父親を気の毒に思うだけになってきた
   - title: 葬送のフリーレン 6
     date: 2021-11-18
     type: Manga
     url: https://www.amazon.co.jp/dp/B09KTVN3CY
-    commemnt: 
+    comment: 
   - title: 満州アヘンスクワッド 6
     date: 2021-11-15
     type: Manga
     url: https://www.amazon.co.jp/dp/B09KGSCCQ1
-    commemnt: 
+    comment: 
   - title: マイホームヒーロー 16
     date: 2021-11-15
     type: Manga
     url: https://www.amazon.co.jp/dp/B09KGSMYHJ
-    commemnt: 
+    comment: 
   - title: Love Hard
     date: 2021-11-09
     type: Video
@@ -31,27 +31,27 @@ logs:
     date: 2021-10-31
     type: Manga
     url: https://www.amazon.co.jp/dp/B09JBZDLWZ
-    commemnt: ウイニングランはこの巻までやぞって思ってる
+    comment: ウイニングランはこの巻までやぞって思ってる
   - title: BLUE GIANT EXPLORER 4
     date: 2021-10-30
     type: Manga
     url: https://www.amazon.co.jp/dp/B09JBZCLXF
-    commemnt: ベイエリアを過ぎていってしまった...よく行くジャパニーズスーパーと同じチェーンの店がLAにあるのが出てきて現実と繋がっているのを感じた
+    comment: ベイエリアを過ぎていってしまった...よく行くジャパニーズスーパーと同じチェーンの店がLAにあるのが出てきて現実と繋がっているのを感じた
   - title: グラゼニ～パ・リーグ編～ 13
     date: 2021-10-20
     type: Manga
     url: https://www.amazon.co.jp/dp/B09J87372Z
-    commemnt: いやー、夏之介が同じ歳になって、もっとチャレンジするのを見るのは良い意味で辛くなる
+    comment: いやー、夏之介が同じ歳になって、もっとチャレンジするのを見るのは良い意味で辛くなる
   - title: アンサングシンデレラ 病院薬剤師 葵みどり 7
     date: 2021-10-20
     type: Manga
     url: https://www.amazon.co.jp/dp/B09DCLM6LV
-    commemnt: 軽い気持ちで読めなくなってる
+    comment: 軽い気持ちで読めなくなってる
   - title: 惰性67パーセント
     date: 2021-10-18
     type: Manga
     url: https://www.amazon.co.jp/dp/B09HQM1LYQ
-    commemnt: いつも通りで安心する
+    comment: いつも通りで安心する
   - title: Squid Game
     date: 2021-10-16
     type: Video
@@ -61,22 +61,22 @@ logs:
     date: 2021-10-16
     type: Manga
     url: https://www.amazon.co.jp/dp/B07VTLL44K
-    commemnt: 和山やま作品に今後も癒やしてもらうのだろうと確信する
+    comment: 和山やま作品に今後も癒やしてもらうのだろうと確信する
   - title: 二月の勝者 ―絶対合格の教室― 13
     date: 2021-10-12
     type: Manga
     url: https://www.amazon.co.jp/dp/B09H6VD2M8
-    commemnt:
+    comment:
   - title: おかえりアリス 3
     date: 2021-10-09
     type: Manga
     url: https://www.amazon.co.jp/dp/B09H6YN5T7
-    commemnt:
+    comment:
   - title: 女の園の星 1, 2
     date: 2021-10-08
     type: Manga
     url: https://www.amazon.co.jp/dp/B089SNF6PZ
-    commemnt: 思ったよりギャグが淡々と続いていて、いちいち笑ってしまう
+    comment: 思ったよりギャグが淡々と続いていて、いちいち笑ってしまう
   - title: 僕のヒーローアカデミア 32
     date: 2021-10-03
     type: Manga
