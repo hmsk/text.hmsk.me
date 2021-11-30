@@ -2,6 +2,56 @@
 module: Static.Record
 category: entertainment
 logs:
+  - title: 血の轍 12
+    date: 2021-11-30
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09LM58R4W
+    commemnt: 事件の記憶が薄まってきて母子のいずれにも同情することもできなくなり、父親を気の毒に思うだけになってきた
+  - title: 葬送のフリーレン 6
+    date: 2021-11-18
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09KTVN3CY
+    commemnt: 
+  - title: 満州アヘンスクワッド 6
+    date: 2021-11-15
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09KGSCCQ1
+    commemnt: 
+  - title: マイホームヒーロー 16
+    date: 2021-11-15
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09KGSMYHJ
+    commemnt: 
+  - title: Love Hard
+    date: 2021-11-09
+    type: Video
+    url: https://www.netflix.com/title/81086631
+    comment: コテコテのアメリカのやつだったけど、Jimmy を楽しみ放題の作品だった。
+  - title: 君は放課後インソムニア 7
+    date: 2021-10-31
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09JBZDLWZ
+    commemnt: ウイニングランはこの巻までやぞって思ってる
+  - title: BLUE GIANT EXPLORER 4
+    date: 2021-10-30
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09JBZCLXF
+    commemnt: ベイエリアを過ぎていってしまった...よく行くジャパニーズスーパーと同じチェーンの店がLAにあるのが出てきて現実と繋がっているのを感じた
+  - title: グラゼニ～パ・リーグ編～ 13
+    date: 2021-10-20
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09J87372Z
+    commemnt: いやー、夏之介が同じ歳になって、もっとチャレンジするのを見るのは良い意味で辛くなる
+  - title: アンサングシンデレラ 病院薬剤師 葵みどり 7
+    date: 2021-10-20
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09DCLM6LV
+    commemnt: 軽い気持ちで読めなくなってる
+  - title: 惰性67パーセント
+    date: 2021-10-18
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09HQM1LYQ
+    commemnt: いつも通りで安心する
   - title: Squid Game
     date: 2021-10-16
     type: Video
