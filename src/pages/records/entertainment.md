@@ -2,11 +2,41 @@
 module: Static.Record
 category: entertainment
 logs:
+  # - title:
+  # date: 2021-
+  # type: Manga
+  # url:
+  # comment:
+  - title: 東独にいた 2-5
+    date: 2021-12-17
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B088FGYYP9
+    comment: 違う顔好きすぎる
+  - title: サマーゴースト 1
+    date: 2021-12-16
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09KV3XM12
+    comment: 乙一絡みレーダーで捕捉した
+  - title: ダイヤのA act2 29
+    date: 2021-12-16
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09N36R9W6
+    comment: 沢村の成長しすぎっぷりにぞわぞわする
+  - title: こういうのがいい 1, 2
+    date: 2021-12-16
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B093L51225
+    comment: 平和。おっぱいですぎじゃない...?
   - title: 東独にいた 1
     date: 2021-12-15
     type: Manga
     url: https://www.amazon.co.jp/dp/B082M5SGW3
-    comment: 
+    comment:
+  - title: 東独にいた 1
+    date: 2021-12-15
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B082M5SGW3
+    comment:
   - title: ニューノーマル 2
     date: 2021-12-15
     type: Manga
@@ -16,7 +46,7 @@ logs:
     date: 2021-12-04
     type: Manga
     url: https://www.amazon.co.jp/dp/B09HQMLFW5
-    comment: 
+    comment:
   - title: 二月の勝者 ―絶対合格の教室― 14
     date: 2021-12-12
     type: Manga
@@ -26,37 +56,37 @@ logs:
     date: 2021-12-09
     type: Video
     url: https://www.netflix.com/title/81317135
-    comment: 
+    comment:
   - title: 実録 泣くまでボコられてはじめて恋に落ちました。1, 2
     date: 2021-12-09
     type: Manga
     url: https://www.amazon.co.jp/dp/B07BVPCS61
-    comment: 
+    comment:
   - title: 女の体をゆるすまで 上、下
     date: 2021-12-07
     type: Manga
     url: https://www.amazon.co.jp/dp/B0995S3QR9
-    comment: 
+    comment:
   - title: 弱虫ペダル 75
     date: 2021-12-07
     type: Manga
     url: https://www.amazon.co.jp/dp/B09MQF3N52
-    comment: 
+    comment:
   - title: それでも吉祥寺だけが住みたい街ですか？ 1
     date: 2021-12-04
     type: Manga
     url: https://www.amazon.co.jp/dp/B09JC11LSX
-    comment: 
+    comment:
   - title: 夢で見たあの子のために 9
     date: 2021-12-04
     type: Manga
     url: https://www.amazon.co.jp/dp/B09M6CYNNP
-    comment: 
+    comment:
   - title: プラタナスの実 4
     date: 2021-12-03
     type: Manga
     url: https://www.amazon.co.jp/dp/B09LM5NXMM
-    comment: 
+    comment:
   - title: JUMBO MAX～ハイパーED薬密造人～ 4
     date: 2021-12-01
     type: Manga
@@ -71,17 +101,17 @@ logs:
     date: 2021-11-18
     type: Manga
     url: https://www.amazon.co.jp/dp/B09KTVN3CY
-    comment: 
+    comment:
   - title: 満州アヘンスクワッド 6
     date: 2021-11-15
     type: Manga
     url: https://www.amazon.co.jp/dp/B09KGSCCQ1
-    comment: 
+    comment:
   - title: マイホームヒーロー 16
     date: 2021-11-15
     type: Manga
     url: https://www.amazon.co.jp/dp/B09KGSMYHJ
-    comment: 
+    comment:
   - title: Love Hard
     date: 2021-11-09
     type: Video
