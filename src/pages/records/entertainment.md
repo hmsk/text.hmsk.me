@@ -7,6 +7,31 @@ logs:
   # type: Manga
   # url:
   # comment:
+  - title: 銀河の死なない子供たちへ 上下
+    date: 2021-12-28
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B075M4B2B1
+    comment: 下巻で泣きすぎた
+  - title: チ。―地球の運動について― 6
+    date: 2021-12-27
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09NDCNXXR
+    comment: 最終コマでまた次巻を待つのか...となった
+  - title: 川尻こだまのただれた生活 4
+    date: 2021-12-25
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09KZ7KGWF
+    comment:
+  - title: ワンナイト・モーニング 6
+    date: 2021-12-25
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09JNHZC8N
+    comment: 前まで出ていた人たちを忘れてしまっているな
+  - title: 原作版 左ききのエレン 24
+    date: 2021-12-25
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09NQ391GM
+    comment:
   - title: 東独にいた 2-5
     date: 2021-12-17
     type: Manga
