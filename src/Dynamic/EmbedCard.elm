@@ -7,6 +7,7 @@ import Html.Parser
 import Html.Parser.Util
 import Http
 import Json.Decode exposing (Decoder, field, string)
+import Url.Builder exposing (crossOrigin)
 
 
 type alias Model =
@@ -74,7 +75,15 @@ textHtml t =
 getIframelyEmbedCode : String -> Cmd Msg
 getIframelyEmbedCode url =
     Http.get
-        { url = "https://iframe.ly/api/iframely?omit_script=1&iframe=card&url=" ++ url ++ "&key=" ++ "0fce053df25e594d5d7a616362e565f2"
+        { url =
+            crossOrigin
+                "https://iframe.ly"
+                [ "api", "iframely" ]
+                [ Url.Builder.int "omit_script" 1
+                , Url.Builder.string "iframe" "card"
+                , Url.Builder.string "url" url
+                , Url.Builder.string "key" "0fce053df25e594d5d7a616362e565f2"
+                ]
         , expect = Http.expectJson IframelyResponded iframeDecoder
         }
 
