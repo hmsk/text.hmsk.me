@@ -7,6 +7,96 @@ logs:
   # type: Manga
   # url:
   # comment:
+  - title: トークサバイバー！〜トークが面白いと生き残れるドラマ
+    date: 2022-03-08
+    type: Video
+    url: https://www.netflix.com/title/81484461
+    comment: 下ネタが異様に出てきたこと以外はとても楽しめた。
+  - title: 東京ヒゴロ 1
+    date: 2022-03-06
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09CD3298G
+    comment: 読ませられちゃう感がすごいなあ
+  - title: Dr.STONE 25
+    date: 2022-03-03
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09R9X2QNZ
+    comment: 連載が終わったのを知って、ここから畳むのかと驚いた
+  - title: 揚げて炙ってわかるコンピュータのしくみ
+    date: 2022-03-03
+    type: Book
+    url: https://www.amazon.co.jp/dp/B08FQYYMTP
+    comment:
+  - title: BLUE GIANT EXPLORER 5
+    date: 2022-03-01
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09S2ZBLL5
+    comment: ロードトリップしたくなるなー
+  - title: 嫌われた監督　落合博満は中日をどう変えたのか
+    date: 2022-02-28
+    type: Book
+    url: https://www.amazon.co.jp/dp/B09GFK9DJZ
+    comment: 最高に好きな監督だった。中盤までだいたい泣いた
+  - title: 新しいきみへ 1
+    date: 2022-02-17
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09P37HW6P
+    comment:
+  - title: 海が走るエンドロール 2
+    date: 2022-02-17
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09P88XCX4
+    comment: 年取ってから日本の大学には行きたくない気分になる
+  - title: 不滅のあなたへ 17
+    date: 2022-02-16
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09RQG9S2X
+    comment: 現代で休憩気分だったのがついに終わりそうで良かった
+  - title: ケーキの切れない非行少年たち 4
+    date: 2022-02-09
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09QG6GT9L
+    comment:
+  - title: 弱虫ペダル 76
+    date: 2022-02-08
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09P8729MX
+    comment:
+  - title: 僕のヒーローアカデミア 33
+    date: 2022-02-05
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09P3774YD
+    comment: 爆豪くんのやつ泣くやろ...
+  - title: 満州アヘンスクワッド 7
+    date: 2022-02-05
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09R1KFNN4
+    comment:
+  - title: マイホームヒーロー 17
+    date: 2022-02-04
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09R1JV8TP
+    comment:
+  - title: Dr.STONE 24
+    date: 2022-02-02
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09MRYH41Y
+    comment:
+  - title: 波よ聞いてくれ 9
+    date: 2022-01-26
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09Q52D6F6
+    comment:
+  - title: 君は放課後インソムニア 8
+    date: 2022-01-11
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09P3J9VGY
+    comment: いつ悲劇が起きるのか不安でしょうがない
+  - title: ミューズの真髄 1
+    date: 2022-01-10
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09NVCTZ1B
+    comment:
   - title: 銀河の死なない子供たちへ 上下
     date: 2021-12-28
     type: Manga
@@ -52,11 +142,6 @@ logs:
     type: Manga
     url: https://www.amazon.co.jp/dp/B093L51225
     comment: 平和。おっぱいですぎじゃない...?
-  - title: 東独にいた 1
-    date: 2021-12-15
-    type: Manga
-    url: https://www.amazon.co.jp/dp/B082M5SGW3
-    comment:
   - title: 東独にいた 1
     date: 2021-12-15
     type: Manga
