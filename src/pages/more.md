@@ -47,8 +47,8 @@ date: 2021-06-07
 
 また、人様のポッドキャストに何度か呼んでもらったことがあります。得意ではないけれど、人と話すことは好きなので呼んでください。
 
-[embed:https://podcasts.apple.com/jp/podcast/id1503383609]
-[embed:https://podcasts.apple.com/jp/podcast/id1503383609]
+[embed:https://podcasts.apple.com/jp/podcast/id1503383609?i=1000554579630]
+[embed:https://podcasts.apple.com/jp/podcast/id1503383609?i=1000554533714]
 [embed:https://anchor.fm/background-radio/episodes/Background-radio-ep-23-hmsk-e12f27g]
 [embed:https://ossan.fm/episode/127]
 [embed:https://ossan.fm/episode/126]
