@@ -7,6 +7,26 @@ logs:
   # type: Manga
   # url:
   # comment:
+  - title: 原作版 左ききのエレン 25
+    date: 2022-03-18
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09V57GT7B
+    comment:
+  - title: 葬送のフリーレン 7
+    date: 2022-03-16
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09TKPFGND
+    comment: 合否発表良かった
+  - title: ダイヤのA act2 30
+    date: 2022-03-16
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09TVWB1TD
+    comment: まだ2年よなこれ...って毎話思うう
+  - title: ロスト・ラッド・ロンドン 1, 2
+    date: 2022-03-09
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B08R34XF2B
+    comment: めちゃくちゃ好み
   - title: トークサバイバー！〜トークが面白いと生き残れるドラマ
     date: 2022-03-08
     type: Video
