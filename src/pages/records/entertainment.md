@@ -7,6 +7,66 @@ logs:
   # type: Manga
   # url:
   # comment:
+  - title: 二月の勝者 ―絶対合格の教室― 15
+    date: 2022-04-11
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09WDGN94Q
+    comment: ドラマがどれだけネタバレしてくれたかヒヤヒヤしつつも泣きながら読んでる
+  - title: 弱虫ペダル 77
+    date: 2022-04-10
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09X58V5X9
+    comment:
+  - title: タコピーの原罪 下
+    date: 2022-04-10
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09TKW1VWJ
+    comment: デデデデみがあった気がした
+  - title: ゴールデンカムイ 20-28
+    date: 2022-04-05
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B08216PJYV
+    comment: 終わりが近いと聞いてアニメ放送分以降を一気に読んで追いついた
+  - title: 20時過ぎの報告会 2
+    date: 2022-04-01
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09VRYW44Q
+    comment:
+  - title: プラタナスの実 5
+    date: 2022-03-30
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09VBWGDFW
+    comment:
+  - title: デッドデッドデーモンズデデデデデストラクション 12
+    date: 2022-03-30
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09VBTY73C
+    comment: お、一気に畳まれた
+  - title: JUMBO MAX～ハイパーED薬密造人～ 5
+    date: 2022-03-29
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09VBW1YHM
+    comment:
+  - title: チ。―地球の運動について― 7
+    date: 2022-03-29
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09VBTSTBH
+    comment:
+  - title: はしっこアンサンブル 8
+    date: 2022-03-27
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09VBTSZ4X
+    comment: 終わってしまった...
+  - title: 戦争は女の顔をしていない 3
+    date: 2022-03-25
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09V9XSGK5
+    comment: 今のウクライナ情勢を横目に読むのが辛かった
+  - title: 紛争でしたら八田まで 1-8
+    date: 2022-03-21
+    type: Manga
+    url: https://www.amazon.co.jp/gp/product/B09QC6Q2DQ
+    comment:
   - title: 原作版 左ききのエレン 25
     date: 2022-03-18
     type: Manga
