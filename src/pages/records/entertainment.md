@@ -7,6 +7,76 @@ logs:
   # type: Manga
   # url:
   # comment:
+  - title: ブルーピリオド 12
+    date: 2022-05-22
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09ZXQWPLJ
+    comment: 大学生のうつろいが非常に胸をえぐる
+  - title: 原作版 左ききのエレン 26
+    date: 2022-05-12
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09Z28DBFY
+    comment:
+  - title: 弱虫ペダル SPARE BIKE 10
+    date: 2022-05-07
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09Y57Z1YV
+    comment:
+  - title: ハレ婚。 20
+    date: 2022-05-07
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09Y8T7PL3
+    comment:
+  - title: 今夜は車内でおやすみなさい。 1
+    date: 2022-05-04
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B08R6XW591
+    comment:
+  - title: 僕のヒーローアカデミア 34
+    date: 2022-05-02
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09WMWWPXC
+    comment:
+  - title: 血の轍 13
+    date: 2022-05-01
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09XQ2T73L
+    comment:
+  - title: ひらやすみ 1-3
+    date: 2022-04-28
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09DG3MH93
+    comment:
+  - title: 重版出来！ 18
+    date: 2022-04-26
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09WDJY6Y1
+    comment:
+  - title: 昭和のグラゼニ 1
+    date: 2022-04-22
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09XX9M5LH
+    comment:
+  - title: グラゼニ～大リーグ編～ 1
+    date: 2022-04-22
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09XWZ8GDF
+    comment:
+  - title: 紛争でしたら八田まで 9
+    date: 2022-04-21
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09XQQQPVZ
+    comment:
+  - title: ゴールデンカムイ 29
+    date: 2022-04-19
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09TKVNMBH
+    comment:
+  - title: おかえりアリス 4
+    date: 2022-04-18
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B09WQ6V1HF
+    comment:
   - title: 二月の勝者 ―絶対合格の教室― 15
     date: 2022-04-11
     type: Manga
