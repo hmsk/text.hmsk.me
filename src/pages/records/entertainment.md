@@ -7,6 +7,16 @@ logs:
   # type: Manga
   # url:
   # comment:
+  - title: 緑の歌 - 収集群風 - 上下
+    date: 2022-05-25
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B0B125KNX2
+    comment: 细野晴臣愛がすごい
+  - title: セブンティウイザン 1-5
+    date: 2022-05-23
+    type: Manga
+    url: https://www.amazon.co.jp/dp/B01N4U2DBG
+    comment: 自分に子ができたことで感じるようになるものもあるんだなあ
   - title: ブルーピリオド 12
     date: 2022-05-22
     type: Manga
