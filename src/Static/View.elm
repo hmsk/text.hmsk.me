@@ -34,6 +34,6 @@ footer =
             , marginTop (px 48)
             ]
         ]
-        [ span [] [ text "© 2012-2021 " ]
+        [ span [] [ text "© 2012-2022 " ]
         , a [ href "/more" ] [ text "@hmsk が書いています" ]
         ]
