@@ -2,7 +2,7 @@
   command = "npm run build"
   publish = "dist"
 [build.environment]
-  NODE_VERSION = "16.3.0"
+  NODE_VERSION = "18.18.0"
 [[redirects]]
   from = "/feed"
   to = "/feed.xml"
