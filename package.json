@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "siteelm server -d",
-    "build": "siteelm make -o"
+    "build": "siteelm make -o",
+    "fetch-embeds": "node -r ./bin/load-env.js bin/fetch-embeds.js"
   },
   "repository": {
     "type": "git",
